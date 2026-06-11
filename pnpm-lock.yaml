@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@aincore/sdk':
+        specifier: github:bzda404/mindvault-sdk
+        version: '@mindvault/sdk@https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/742e52601720276a1dd2fbcfdf0c895e6579faa6'
       '@electron-toolkit/preload':
         specifier: ^3.0.2
         version: 3.0.2(electron@38.4.0)
@@ -23,9 +26,6 @@ importers:
       '@marktext/file-icons':
         specifier: ^1.0.6
         version: 1.0.6
-      '@mindvault/sdk':
-        specifier: github:bzda404/mindvault-sdk
-        version: https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/7926cec78704bc5f81984816d2bfeddf6e8b4317
       '@modelcontextprotocol/sdk':
         specifier: ^1.29.0
         version: 1.29.0(zod@4.4.3)
@@ -1408,9 +1408,9 @@ packages:
   '@mermaid-js/parser@1.1.1':
     resolution: {integrity: sha512-VuHdsYMK1bT6X2JbcAaWAhugTRvRBRyuZgd+c22swUeI9g/ntaxF7CY7dYarhZovofCbUNO0G7JesfmNtjYOCw==}
 
-  '@mindvault/sdk@https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/7926cec78704bc5f81984816d2bfeddf6e8b4317':
-    resolution: {gitHosted: true, tarball: https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/7926cec78704bc5f81984816d2bfeddf6e8b4317}
-    version: 0.3.0
+  '@mindvault/sdk@https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/742e52601720276a1dd2fbcfdf0c895e6579faa6':
+    resolution: {gitHosted: true, integrity: sha512-L8BuaGzFdHfFP0tC/ja8v+D+vgyn9on2cZyMI2QWSzW+vTlBBnIJFI9jg3i7WiUjkJyOZje/80gBMBKtn8uVww==, tarball: https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/742e52601720276a1dd2fbcfdf0c895e6579faa6}
+    version: 0.4.0
 
   '@mixmark-io/domino@2.2.0':
     resolution: {integrity: sha512-Y28PR25bHXUg88kCV7nivXrP2Nj2RueZ3/l/jdx6J9f8J4nsEGcgX0Qe6lt7Pa+J79+kPiJU3LguR6O/6zrLOw==}
@@ -6441,7 +6441,7 @@ snapshots:
     dependencies:
       '@chevrotain/types': 11.1.2
 
-  '@mindvault/sdk@https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/7926cec78704bc5f81984816d2bfeddf6e8b4317': {}
+  '@mindvault/sdk@https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/742e52601720276a1dd2fbcfdf0c895e6579faa6': {}
 
   '@mixmark-io/domino@2.2.0': {}
 

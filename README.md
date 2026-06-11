@@ -25,7 +25,7 @@ Hearthnotes 是一个本地优先的知识管理工具，基于 [Hearth](https:/
 | 编辑器引擎 | muyajs（基于 Snabbdom 的 Markdown 渲染） |
 | 搜索引擎 | BM25 + jieba 分词 + RRF 融合排序 |
 | MCP | @modelcontextprotocol/sdk (stdio transport) |
-| AI 通信 | @mindvault/sdk → Hearth UDS JSON-RPC |
+| AI 通信 | @aincore/sdk → Hearth UDS JSON-RPC |
 | 构建 | electron-vite 5 + electron-builder 26 |
 | 语言 | TypeScript 5.9 (strict) |
 
@@ -67,7 +67,7 @@ pnpm lint         # ESLint 代码检查
 hearthnotes/
 ├── src/
 │   ├── main/
-│   │   ├── ai/           AI 服务（通过 @mindvault/sdk 连接 Hearth）
+│   │   ├── ai/           AI 服务（通过 @aincore/sdk 连接 Hearth）
 │   │   ├── mcp/          MCP 协议服务端 + 隐私拦截
 │   │   ├── search/       BM25 索引 + RRF 融合搜索
 │   │   ├── ipc/          IPC 处理器（AI、MCP、搜索、文件系统等）
@@ -93,4 +93,4 @@ hearthnotes/
 ## 相关链接
 
 - [Hearth](https://github.com/bzda404/hearth) — 本地 AI 算力平台
-- [@mindvault/sdk](https://github.com/bzda404/mindvault-sdk) — 接入 Hearth 的 TypeScript SDK
+- [@aincore/sdk](https://github.com/bzda404/mindvault-sdk) — 接入 Hearth 的 TypeScript SDK

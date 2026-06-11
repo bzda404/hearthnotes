@@ -1,7 +1,7 @@
 /**
  * AI IPC 处理器 — 通过 MindVault Core OAuth SDK 提供 AI 功能
  *
- * Notes 使用 @mindvault/sdk 和 coreBridge.ts 取代原有的底层连接。
+ * Notes 使用 @aincore/sdk 和 coreBridge.ts 取代原有的底层连接。
  * 模型管理移到 Core Admin UI；Notes 只负责 AI 功能的 IPC 分发。
  */
 import { ipcMain } from 'electron'

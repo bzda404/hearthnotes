@@ -2,7 +2,7 @@
 /**
  * Core Bridge — Notes 与 MindVault Core 的通信层
  *
- * 使用 @mindvault/sdk 中 MindVaultClient + OAuth 2.0 PKCE 完成授权和通信。
+ * 使用 @aincore/sdk 中 MindVaultClient + OAuth 2.0 PKCE 完成授权和通信。
  * 替代原有的 modelHubClient.ts + udsClient.ts + coreSupervisor.ts。
  *
  * Notes 作为 Core 应用市场的第一个内置应用:
@@ -13,8 +13,8 @@
  *   - token 过期前自动刷新 (由 SDK getAccessToken() 处理)
  *   - 运行时 Core 被 kill 后自动重连（指数退避）
  */
-import { MindVaultClient, generatePKCE } from '@mindvault/sdk'
-import type { OAuthTokenSet, OAuthClientConfig } from '@mindvault/sdk'
+import { MindVaultClient, generatePKCE } from '@aincore/sdk'
+import type { OAuthTokenSet, OAuthClientConfig } from '@aincore/sdk'
 import type {
   AutocompleteRequest,
   AutocompleteResponse,
