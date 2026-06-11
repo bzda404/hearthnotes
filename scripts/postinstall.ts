@@ -24,9 +24,13 @@ const ext = process.platform === 'win32' ? '.cmd' : ''
 const patchPackageBin = path.join(repoRoot, 'node_modules', '.bin', `patch-package${ext}`)
 const electronRebuildBin = path.join(repoRoot, 'node_modules', '.bin', `electron-rebuild${ext}`)
 
+// Skip native module operations in CI (no X11/xkbfile on Linux runners)
+const isCI = !!process.env.CI
+
+
 // ── 1. Ensure native-keymap source is present ──
 const nativeKeymapDir = path.join(repoRoot, 'node_modules', 'native-keymap')
-if (!fs.existsSync(nativeKeymapDir)) {
+if (!isCI && !fs.existsSync(nativeKeymapDir)) {
   console.log('Installing native-keymap source (skipping compilation)...')
   if (isPnpm) {
     run('pnpm add native-keymap --ignore-scripts')
@@ -122,8 +126,12 @@ console.log('Applying patches...')
 run(`"${patchPackageBin}"`)
 
 // ── 4. Rebuild native modules for Electron ABI ──
-console.log('Rebuilding native modules for Electron...')
-run(`"${electronRebuildBin}" -f`)
+if (isCI) {
+  console.log('Skipping native module rebuild in CI environment')
+} else {
+  console.log('Rebuilding native modules for Electron...')
+  run(`"${electronRebuildBin}" -f`)
+}
 
 // ── 5. Generate minified locale files ──
 console.log('Minifying locales...')
