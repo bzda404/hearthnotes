@@ -24,8 +24,8 @@ importers:
         specifier: ^1.0.6
         version: 1.0.6
       '@mindvault/sdk':
-        specifier: file:../mindvault-sdk-temp
-        version: file:../mindvault-sdk-temp
+        specifier: github:bzda404/mindvault-sdk
+        version: https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/7926cec78704bc5f81984816d2bfeddf6e8b4317
       '@modelcontextprotocol/sdk':
         specifier: ^1.29.0
         version: 1.29.0(zod@4.4.3)
@@ -1412,8 +1412,9 @@ packages:
   '@mermaid-js/parser@1.1.1':
     resolution: {integrity: sha512-VuHdsYMK1bT6X2JbcAaWAhugTRvRBRyuZgd+c22swUeI9g/ntaxF7CY7dYarhZovofCbUNO0G7JesfmNtjYOCw==}
 
-  '@mindvault/sdk@file:../mindvault-sdk-temp':
-    resolution: {directory: ../mindvault-sdk-temp, type: directory}
+  '@mindvault/sdk@https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/7926cec78704bc5f81984816d2bfeddf6e8b4317':
+    resolution: {gitHosted: true, integrity: sha512-8WJ2hBpribmRE+c5/INcQtrB1Hy2vy+eTPW6qHBUvPgV5lrX6uYXP30IvGAlEWjta6h00nLStE+5ruEmDBcSpQ==, tarball: https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/7926cec78704bc5f81984816d2bfeddf6e8b4317}
+    version: 0.3.0
 
   '@mixmark-io/domino@2.2.0':
     resolution: {integrity: sha512-Y28PR25bHXUg88kCV7nivXrP2Nj2RueZ3/l/jdx6J9f8J4nsEGcgX0Qe6lt7Pa+J79+kPiJU3LguR6O/6zrLOw==}
@@ -6431,7 +6432,7 @@ snapshots:
     dependencies:
       '@chevrotain/types': 11.1.2
 
-  '@mindvault/sdk@file:../mindvault-sdk-temp': {}
+  '@mindvault/sdk@https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/7926cec78704bc5f81984816d2bfeddf6e8b4317': {}
 
   '@mixmark-io/domino@2.2.0': {}
 
