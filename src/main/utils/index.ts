@@ -50,8 +50,8 @@ export const hasSameKeys = (a: Record<string, unknown>, b: Record<string, unknow
 export type LogLevel = 'silly' | 'debug' | 'verbose' | 'info'
 
 export const getLogLevel = (): LogLevel => {
-  const verbose = (globalThis as typeof globalThis & { MINDVAULT_NOTES_DEBUG_VERBOSE?: number })
-    .MINDVAULT_NOTES_DEBUG_VERBOSE
+  const verbose = (globalThis as typeof globalThis & { AINCORE_NOTES_DEBUG_VERBOSE?: number })
+    .AINCORE_NOTES_DEBUG_VERBOSE
   if (!verbose || typeof verbose !== 'number' || verbose <= 0) {
     return process.env.NODE_ENV === 'development' ? 'debug' : 'info'
   } else if (verbose === 1) {

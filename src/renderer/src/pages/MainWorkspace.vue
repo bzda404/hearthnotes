@@ -1,5 +1,5 @@
 <template>
-  <div class="mindvault-workspace">
+  <div class="aincore-workspace">
     <!-- 1. Icon Navigation Rail (leftmost) -->
     <nav class="nav-rail">
       <div class="nav-top">
@@ -412,7 +412,7 @@
       <div class="ai-header">
         <div class="ai-header-left">
           <span class="ai-logo">M</span>
-          <span class="ai-title">MindVault AI</span>
+          <span class="ai-title">AinCore AI</span>
         </div>
         <div class="ai-header-right">
           <span
@@ -748,7 +748,7 @@ const editTextarea = ref<HTMLTextAreaElement | null>(null)
 let autocompleteTimer: ReturnType<typeof setTimeout> | null = null
 let autocompleteId = 0
 
-// MindVault Core state
+// AinCore state
 const hubConnected = ref(false)
 
 async function checkHub (): Promise<void> {
@@ -1255,7 +1255,7 @@ onMounted(async () => {
   aiStore.fetchStatus()
   mcpStore.setupListeners()
   mcpStore.fetchStatus()
-  checkHub() // 检查 MindVault Core 连接状态
+  checkHub() // 检查 AinCore 连接状态
 
   // 全局快捷键
   document.addEventListener('keydown', handleGlobalKeydown)
@@ -1307,7 +1307,7 @@ onUnmounted(() => {
 
 <style scoped>
 /* ========== Layout ========== */
-.mindvault-workspace {
+.aincore-workspace {
   display: flex;
   height: 100vh;
   width: 100vw;

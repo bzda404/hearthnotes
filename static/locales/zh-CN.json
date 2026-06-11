@@ -104,25 +104,25 @@
       "reportBug": "报告错误",
       "viewSource": "查看源码",
       "followUs": "关注我们",
-      "support": "支持 MindVault",
+      "support": "支持 AinCore",
       "license": "许可证",
       "checkForUpdates": "检查更新",
-      "aboutMarkText": "关于 MindVault",
+      "aboutMarkText": "关于 AinCore",
       "about": "关于",
       "checkUpdates": "检查更新"
     },
     "marktext": {
-      "title": "MindVault",
-      "marktext": "MindVault",
-      "about": "关于 MindVault",
+      "title": "AinCore",
+      "marktext": "AinCore",
+      "about": "关于 AinCore",
       "checkUpdates": "检查更新…",
       "preferences": "偏好设置",
       "services": "服务",
-      "hide": "隐藏 MindVault",
-      "hideMarkText": "隐藏 MindVault",
+      "hide": "隐藏 AinCore",
+      "hideMarkText": "隐藏 AinCore",
       "hideOthers": "隐藏其他",
       "showAll": "显示全部",
-      "quit": "退出 MindVault"
+      "quit": "退出 AinCore"
     },
     "view": {
       "view": "视图",
@@ -389,7 +389,7 @@
   },
   "import": {
     "title": "导入或打开",
-    "description": "拖放到这里将您的内容导入 MindVault"
+    "description": "拖放到这里将您的内容导入 AinCore"
   },
   "preferences": {
     "title": "偏好设置",
@@ -419,10 +419,10 @@
         "hideScrollbar": "是否隐藏滚动条",
         "wordWrapInToc": "是否在目录中启用自动换行",
         "fileSortBy": "按创建时间、修改时间和标题对打开文件夹中的文件进行排序",
-        "startUpAction": "MindVault 启动后的操作，打开最后编辑的内容、打开指定文件夹或空白页",
+        "startUpAction": "AinCore 启动后的操作，打开最后编辑的内容、打开指定文件夹或空白页",
         "restoreLayoutState": "启动时恢复上次编辑器状态",
         "defaultDirectoryToOpen": "当 startUp=folder 时启动时应打开的默认目录",
-        "language": "MindVault 使用的语言",
+        "language": "AinCore 使用的语言",
         "editorFontFamily": "编辑器字体系列",
         "fontSize": "字体大小（像素）",
         "lineHeight": "行高",
@@ -446,7 +446,7 @@
         "preferLooseListItem": "首选列表类型",
         "bulletListMarker": "项目符号列表中使用的标记",
         "orderListDelimiter": "有序列表中使用的分隔符",
-        "preferHeadingStyle": "MindVault 中的首选标题样式",
+        "preferHeadingStyle": "AinCore 中的首选标题样式",
         "tabSize": "用 x 个空格替换制表符",
         "listIndentation": "选择列表的缩进",
         "frontmatterType": "前言类型",
@@ -455,7 +455,7 @@
         "isHtmlEnabled": "启用 HTML 渲染",
         "isGitlabCompatibilityEnabled": "启用 GitLab 兼容模式",
         "sequenceTheme": "序列图主题",
-        "theme": "选择 MindVault 中使用的主题",
+        "theme": "选择 AinCore 中使用的主题",
         "followSystemTheme": "跟随系统主题",
         "lightModeTheme": "系统处于浅色模式时使用的主题",
         "darkModeTheme": "系统处于深色模式时使用的主题",
@@ -712,7 +712,7 @@
         "pleaseInstall": "请安装",
         "scriptPath": "脚本路径"
       },
-      "defaultBehavior": "粘贴或拖拽图片到 MindVault 后的默认行为"
+      "defaultBehavior": "粘贴或拖拽图片到 AinCore 后的默认行为"
     },
     "markdown": {
       "title": "Markdown",
@@ -899,7 +899,7 @@
   },
   "commands": {
     "mt": {
-      "hide": "隐藏 MindVault",
+      "hide": "隐藏 AinCore",
       "hideOthers": "隐藏其他"
     },
     "file": {
@@ -1067,7 +1067,7 @@
     "saveFailure": "保存失败"
   },
   "error": {
-    "CORE_NOT_RUNNING": "MindVault Core 未运行，请先启动 Core。",
+    "CORE_NOT_RUNNING": "AinCore 未运行，请先启动 Core。",
     "AI_NOT_READY": "AI 未就绪，请等待 Core 启动。",
     "AI_CONNECTION_LOST": "与 Core 的连接已断开，正在尝试重连...",
     "UNKNOWN": "发生意外错误。"
@@ -1407,7 +1407,7 @@
       "latency": "最近 {ms}ms",
       "tokPerSec": "tok/s",
       "unknownParams": "参数未知",
-      "defaultHint": "通过本地 UDS 连接 MindVault Core"
+      "defaultHint": "通过本地 UDS 连接 AinCore"
     }
   },
   "onboarding": {
@@ -1422,9 +1422,9 @@
         "browse": "浏览"
       },
       "step2": {
-        "title": "连接 MindVault Core",
-        "desc": "MindVault Notes 通过 MindVault Core 使用本地 AI。请检查下方连接状态。",
-        "hint": "如果 Core 离线，请先启动 MindVault Core，连接将自动建立。"
+        "title": "连接 AinCore",
+        "desc": "AinCore Notes 通过 AinCore 使用本地 AI。请检查下方连接状态。",
+        "hint": "如果 Core 离线，请先启动 AinCore，连接将自动建立。"
       }
     }
   },
@@ -1457,7 +1457,7 @@
       "ghostHint": "Tab 接受 · Esc 取消"
     },
     "ai": {
-      "notConnected": "未连接到 MindVault Core",
+      "notConnected": "未连接到 AinCore",
       "reconnect": "重新连接",
       "noModel": "Core 在线，但还没有可用的 ≤1B 本地模型",
       "openModelHub": "打开模型中心",
@@ -1507,7 +1507,7 @@
     "title": "模型中心",
     "backToNotes": "返回笔记",
     "notRunning": "模型中心未运行",
-    "startCore": "请先启动 MindVault Core 应用",
+    "startCore": "请先启动 AinCore 应用",
     "reconnect": "重新连接",
     "needModel": "需要安装 ≤1B 轻量模型",
     "coreConnected": "Core 已连接，等待模型加载",
@@ -1543,9 +1543,9 @@
     "statusReady": "Core 就绪",
     "statusNeedModel": "缺少轻量模型",
     "statusOnline": "Core 在线",
-    "coreNotRunning": "MindVault Core 未运行",
+    "coreNotRunning": "AinCore 未运行",
     "installModelHint": "安装或加载一个 ≤1B 模型后即可启用本地补全",
-    "loadPolicyBlocked": "该模型不符合 MindVault Core 轻量加载策略",
+    "loadPolicyBlocked": "该模型不符合 AinCore 轻量加载策略",
     "loadFailed": "加载失败: {error}",
     "unloadFailed": "卸载失败: {error}",
     "confirmDelete": "确定删除此模型？",

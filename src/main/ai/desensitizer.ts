@@ -64,7 +64,7 @@ function detectWithRegex(text: string): PIIEntity[] {
  * Detect PII entities using the local AI model for NER.
  */
 async function detectWithModel(text: string): Promise<PIIEntity[]> {
-  // Try MindVault Core for NER, fall back to regex
+  // Try AinCore for NER, fall back to regex
   try {
     const available = await modelHubClient.discover()
     if (!available) return detectWithRegex(text)

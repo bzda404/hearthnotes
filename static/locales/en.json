@@ -1065,7 +1065,7 @@
     "saveFailure": "Save failure"
   },
   "error": {
-    "CORE_NOT_RUNNING": "MindVault Core is not running. Please start Core first.",
+    "CORE_NOT_RUNNING": "AinCore is not running. Please start Core first.",
     "AI_NOT_READY": "AI is not ready. Please wait for Core to start.",
     "AI_CONNECTION_LOST": "Lost connection to Core. Attempting to reconnect...",
     "UNKNOWN": "An unexpected error occurred."
@@ -1406,7 +1406,7 @@
       "latency": "Last: {ms}ms",
       "tokPerSec": "tok/s",
       "unknownParams": "Unknown params",
-      "defaultHint": "Connect to MindVault Core via local UDS"
+      "defaultHint": "Connect to AinCore via local UDS"
     }
   },
   "onboarding": {
@@ -1421,9 +1421,9 @@
         "browse": "Browse"
       },
       "step2": {
-        "title": "Connect to MindVault Core",
-        "desc": "MindVault Notes uses local AI via MindVault Core. Check the connection status below.",
-        "hint": "If Core is offline, start it from MindVault Core and the connection will be established automatically."
+        "title": "Connect to AinCore",
+        "desc": "AinCore Notes uses local AI via AinCore. Check the connection status below.",
+        "hint": "If Core is offline, start it from AinCore and the connection will be established automatically."
       }
     }
   },
@@ -1456,7 +1456,7 @@
       "ghostHint": "Tab to accept · Esc to cancel"
     },
     "ai": {
-      "notConnected": "Not connected to MindVault Core",
+      "notConnected": "Not connected to AinCore",
       "reconnect": "Reconnect",
       "noModel": "Core is online, but no ≤1B local model is available",
       "openModelHub": "Open Model Hub",
@@ -1506,7 +1506,7 @@
     "title": "Model Hub",
     "backToNotes": "Back to Notes",
     "notRunning": "Model Hub not running",
-    "startCore": "Please start MindVault Core first",
+    "startCore": "Please start AinCore first",
     "reconnect": "Reconnect",
     "needModel": "A ≤1B lightweight model is required",
     "coreConnected": "Core connected, waiting for model",
@@ -1542,9 +1542,9 @@
     "statusReady": "Core Ready",
     "statusNeedModel": "Needs lightweight model",
     "statusOnline": "Core Online",
-    "coreNotRunning": "MindVault Core not running",
+    "coreNotRunning": "AinCore not running",
     "installModelHint": "Install or load a ≤1B model to enable local completion",
-    "loadPolicyBlocked": "This model does not meet MindVault Core lightweight policy",
+    "loadPolicyBlocked": "This model does not meet AinCore lightweight policy",
     "loadFailed": "Load failed: {error}",
     "unloadFailed": "Unload failed: {error}",
     "confirmDelete": "Delete this model?",

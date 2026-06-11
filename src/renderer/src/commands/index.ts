@@ -654,7 +654,7 @@ const commands: CommandDescriptor[] = [
     id: 'docs.user-guide',
     execute: async() => {
       window.electron.shell.openExternal(
-        'https://mindvault.app/docs/basics'
+        'https://aincore.app/docs/basics'
       )
     }
   },
@@ -662,7 +662,7 @@ const commands: CommandDescriptor[] = [
     id: 'docs.markdown-syntax',
     execute: async() => {
       window.electron.shell.openExternal(
-        'https://mindvault.app/docs/markdown-syntax'
+        'https://aincore.app/docs/markdown-syntax'
       )
     }
   },

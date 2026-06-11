@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@aincore/sdk':
-        specifier: github:bzda404/mindvault-sdk
-        version: '@mindvault/sdk@https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/742e52601720276a1dd2fbcfdf0c895e6579faa6'
+        specifier: ^0.4.1
+        version: 0.4.1
       '@electron-toolkit/preload':
         specifier: ^3.0.2
         version: 3.0.2(electron@38.4.0)
@@ -294,6 +294,9 @@ importers:
         version: 3.3.9
 
 packages:
+
+  '@aincore/sdk@0.4.1':
+    resolution: {integrity: sha512-fmErBucgvsPZzXAM2LRJ8X0++EQdFm/CE7qb797Xg8jQOxjxvMDN4nlDEA6Ocl3I3p0mhvslFCKxnYrWc/lE3w==}
 
   '@antfu/install-pkg@1.1.0':
     resolution: {integrity: sha512-MGQsmw10ZyI+EJo45CdSER4zEb+p31LpDAFp2Z3gkSd1yqVZGi0Ebx++YTEMonJy4oChEMLsxZ64j8FH6sSqtQ==}
@@ -1407,10 +1410,6 @@ packages:
 
   '@mermaid-js/parser@1.1.1':
     resolution: {integrity: sha512-VuHdsYMK1bT6X2JbcAaWAhugTRvRBRyuZgd+c22swUeI9g/ntaxF7CY7dYarhZovofCbUNO0G7JesfmNtjYOCw==}
-
-  '@mindvault/sdk@https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/742e52601720276a1dd2fbcfdf0c895e6579faa6':
-    resolution: {gitHosted: true, integrity: sha512-L8BuaGzFdHfFP0tC/ja8v+D+vgyn9on2cZyMI2QWSzW+vTlBBnIJFI9jg3i7WiUjkJyOZje/80gBMBKtn8uVww==, tarball: https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/742e52601720276a1dd2fbcfdf0c895e6579faa6}
-    version: 0.4.0
 
   '@mixmark-io/domino@2.2.0':
     resolution: {integrity: sha512-Y28PR25bHXUg88kCV7nivXrP2Nj2RueZ3/l/jdx6J9f8J4nsEGcgX0Qe6lt7Pa+J79+kPiJU3LguR6O/6zrLOw==}
@@ -5461,6 +5460,8 @@ packages:
 
 snapshots:
 
+  '@aincore/sdk@0.4.1': {}
+
   '@antfu/install-pkg@1.1.0':
     dependencies:
       package-manager-detector: 1.6.0
@@ -6440,8 +6441,6 @@ snapshots:
   '@mermaid-js/parser@1.1.1':
     dependencies:
       '@chevrotain/types': 11.1.2
-
-  '@mindvault/sdk@https://codeload.github.com/bzda404/mindvault-sdk/tar.gz/742e52601720276a1dd2fbcfdf0c895e6579faa6': {}
 
   '@mixmark-io/domino@2.2.0': {}
 

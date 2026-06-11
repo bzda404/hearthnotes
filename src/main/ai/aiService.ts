@@ -1,5 +1,5 @@
 /**
- * AI Service — 通过 MindVault Core 提供 AI 功能。
+ * AI Service — 通过 AinCore 提供 AI 功能。
  *
  * @deprecated 此模块已废弃。所有调用内部委托给 CoreBridge (OAuth 2.0 PKCE)。
  * 请直接使用 `./coreBridge` 中的对应函数。
@@ -23,7 +23,7 @@ let deprecationWarned = false
 function warnDeprecation(method: string): void {
   if (!deprecationWarned) {
     console.warn(
-      `[MindVault Notes] ⚠️ aiService.${method}() 已废弃。` +
+      `[AinCore Notes] ⚠️ aiService.${method}() 已废弃。` +
         '请使用 coreBridge 中的等效函数。此兼容层将在未来版本中移除。',
     )
     deprecationWarned = true
@@ -31,7 +31,7 @@ function warnDeprecation(method: string): void {
 }
 
 /**
- * 检查 MindVault Core 是否可用
+ * 检查 AinCore 是否可用
  * @deprecated 使用 coreBridge.isCoreReady() 或 coreBridge.isModelHubAvailable()
  */
 export async function isModelHubAvailable(): Promise<boolean> {

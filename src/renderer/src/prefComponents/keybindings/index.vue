@@ -169,7 +169,7 @@ onUnmounted(() => {
 
 const openKeybindingWiki = (): void => {
   window.electron.shell.openExternal(
-    'https://github.com/bzda404/mindvault/blob/develop/docs/end-user/KEYBINDINGS.md'
+    'https://github.com/bzda404/aincore/blob/develop/docs/end-user/KEYBINDINGS.md'
   )
 }
 

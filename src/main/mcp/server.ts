@@ -28,7 +28,7 @@ const PREVIEW_LIMIT = 1200
 
 export function createMCPServer(): Server {
   const server = new Server(
-    { name: 'mindvault', version: '1.0.0' },
+    { name: 'aincore', version: '1.0.0' },
     { capabilities: { tools: {}, resources: {} } }
   )
 
@@ -114,7 +114,7 @@ export function createMCPServer(): Server {
   server.setRequestHandler(ListResourcesRequestSchema, async() => ({
     resources: [
       {
-        uri: 'mindvault://kb',
+        uri: 'aincore://kb',
         name: '知识库列表',
         description: '列出所有可用知识库',
         mimeType: 'application/json',
@@ -125,7 +125,7 @@ export function createMCPServer(): Server {
   // 注册资源读取
   server.setRequestHandler(ReadResourceRequestSchema, async(request) => {
     const uri = request.params.uri
-    if (uri === 'mindvault://kb') {
+    if (uri === 'aincore://kb') {
       return {
         contents: [{
           uri,

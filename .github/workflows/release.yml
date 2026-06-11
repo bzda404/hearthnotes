@@ -61,7 +61,7 @@ jobs:
           subject-path: 'dist/*'
       - uses: actions/upload-artifact@v4
         with:
-          name: hearthnotes-${{ matrix.platform }}-${{ matrix.arch }}
+          name: aincore-notes-${{ matrix.platform }}-${{ matrix.arch }}
           path: dist/*
   publish:
     needs: build

@@ -12,7 +12,7 @@ const cli = (): ParsedArgs => {
   let argv = process.argv.slice(1)
   if (process.env.NODE_ENV === 'development') {
     // Don't pass electron development arguments to MarkText and change user data path.
-    argv = ['--user-data-dir', path.join(getPath('appData'), 'mindvault-notes-dev')]
+    argv = ['--user-data-dir', path.join(getPath('appData'), 'aincore-notes-dev')]
   }
 
   const args = parseArgs(argv, true)
@@ -35,7 +35,7 @@ const cli = (): ParsedArgs => {
   }
 
   if (args['--version']) {
-    writeLine(`MarkText: ${MINDVAULT_NOTES_VERSION_STRING}`)
+    writeLine(`MarkText: ${AINCORE_NOTES_VERSION_STRING}`)
     writeLine(`Node.js: ${process.versions.node}`)
     writeLine(`Electron: ${process.versions.electron}`)
     writeLine(`Chromium: ${process.versions.chrome}`)
@@ -46,7 +46,7 @@ const cli = (): ParsedArgs => {
   // Check for portable mode and ensure the user data path is absolute. We assume
   // that the path is writable if not this lead to an application crash.
   if (!args['--user-data-dir']) {
-    const portablePath = path.join(app.getAppPath(), '..', '..', 'mindvault-notes-user-data')
+    const portablePath = path.join(app.getAppPath(), '..', '..', 'aincore-notes-user-data')
     if (isDirectory(portablePath)) {
       args['--user-data-dir'] = portablePath
     }

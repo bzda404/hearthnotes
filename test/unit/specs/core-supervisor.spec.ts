@@ -17,7 +17,7 @@ vi.mock('electron', () => ({
   app: { isPackaged: false },
 }))
 
-describe('MindVault Core supervisor', () => {
+describe('AinCore supervisor', () => {
   beforeEach(() => {
     vi.resetModules()
     connect.mockReset()

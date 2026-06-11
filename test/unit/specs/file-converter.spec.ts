@@ -10,8 +10,8 @@ import {
 
 describe('fileConverter', () => {
   it('writes converted markdown into the knowledge base output directory', async() => {
-    const sourceDir = await mkdtemp(join(tmpdir(), 'mindvault-source-'))
-    const kbDir = await mkdtemp(join(tmpdir(), 'mindvault-kb-'))
+    const sourceDir = await mkdtemp(join(tmpdir(), 'aincore-source-'))
+    const kbDir = await mkdtemp(join(tmpdir(), 'aincore-kb-'))
     const source = join(sourceDir, 'Research Log.txt')
     await writeFile(source, 'privacy first\nlocal AI', 'utf-8')
 
@@ -22,8 +22,8 @@ describe('fileConverter', () => {
   })
 
   it('does not overwrite an existing markdown note in the output directory', async() => {
-    const sourceDir = await mkdtemp(join(tmpdir(), 'mindvault-source-'))
-    const kbDir = await mkdtemp(join(tmpdir(), 'mindvault-kb-'))
+    const sourceDir = await mkdtemp(join(tmpdir(), 'aincore-source-'))
+    const kbDir = await mkdtemp(join(tmpdir(), 'aincore-kb-'))
     const source = join(sourceDir, 'Report.txt')
     await writeFile(source, 'new report', 'utf-8')
     await writeFile(join(kbDir, 'Report.md'), '# Existing\n', 'utf-8')
@@ -35,7 +35,7 @@ describe('fileConverter', () => {
   })
 
   it('renders CSV with quoted commas and markdown table escaping', async() => {
-    const dir = await mkdtemp(join(tmpdir(), 'mindvault-csv-'))
+    const dir = await mkdtemp(join(tmpdir(), 'aincore-csv-'))
     const source = join(dir, 'Audit.csv')
     await writeFile(source, 'Name,Note\n"Alice, Inc","risk | high"\nBob,"ok"', 'utf-8')
 
@@ -64,7 +64,7 @@ describe('fileConverter', () => {
   })
 
   it('applies markdown cleanup to converted text files', async() => {
-    const dir = await mkdtemp(join(tmpdir(), 'mindvault-txt-'))
+    const dir = await mkdtemp(join(tmpdir(), 'aincore-txt-'))
     const source = join(dir, 'Loose.txt')
     await writeFile(source, '• alpha\n\n\n– beta   ', 'utf-8')
 

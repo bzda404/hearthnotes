@@ -24,8 +24,8 @@ export default defineConfig({
       }
     },
     define: {
-      MINDVAULT_NOTES_VERSION: JSON.stringify(packageJson.version),
-      MINDVAULT_NOTES_VERSION_STRING: JSON.stringify(`v${packageJson.version}`)
+      AINCORE_NOTES_VERSION: JSON.stringify(packageJson.version),
+      AINCORE_NOTES_VERSION_STRING: JSON.stringify(`v${packageJson.version}`)
     },
     resolve: {
       alias: {

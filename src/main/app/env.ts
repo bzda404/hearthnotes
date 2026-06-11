@@ -83,7 +83,7 @@ const setupEnvironment = (args: Record<string, unknown>): AppEnvironment => {
 
   const isDevMode = process.env.NODE_ENV !== 'production'
   const debug =
-    !!args['--debug'] || !!process.env.MINDVAULT_NOTES_DEBUG || process.env.NODE_ENV !== 'production'
+    !!args['--debug'] || !!process.env.AINCORE_NOTES_DEBUG || process.env.NODE_ENV !== 'production'
   const verbose = (args['--verbose'] as number | undefined) || 0
   const safeMode = !!args['--safe']
   const userDataPath = args['--user-data-dir'] as string | undefined // or undefined (= default user data path)
@@ -102,13 +102,13 @@ const setupEnvironment = (args: Record<string, unknown>): AppEnvironment => {
 
   // Keep this for easier access.
   const mutableGlobal = global as unknown as {
-    MINDVAULT_NOTES_DEBUG: boolean
-    MINDVAULT_NOTES_DEBUG_VERBOSE: number
-    MINDVAULT_NOTES_SAFE_MODE: boolean
+    AINCORE_NOTES_DEBUG: boolean
+    AINCORE_NOTES_DEBUG_VERBOSE: number
+    AINCORE_NOTES_SAFE_MODE: boolean
   }
-  mutableGlobal.MINDVAULT_NOTES_DEBUG = debug
-  mutableGlobal.MINDVAULT_NOTES_DEBUG_VERBOSE = verbose
-  mutableGlobal.MINDVAULT_NOTES_SAFE_MODE = safeMode
+  mutableGlobal.AINCORE_NOTES_DEBUG = debug
+  mutableGlobal.AINCORE_NOTES_DEBUG_VERBOSE = verbose
+  mutableGlobal.AINCORE_NOTES_SAFE_MODE = safeMode
 
   return appEnvironment
 }

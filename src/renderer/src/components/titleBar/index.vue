@@ -17,7 +17,7 @@
         class="title"
         @dblclick.stop="toggleMaxmizeOnMacOS"
       >
-        <span v-if="!filename">MindVault</span>
+        <span v-if="!filename">AinCore</span>
         <span v-else>
           <span
             v-for="(path, index) of paths"

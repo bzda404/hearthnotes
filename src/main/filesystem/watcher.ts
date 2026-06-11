@@ -281,7 +281,7 @@ class Watcher {
       .on('unlinkDir', (pathname: string) => unlinkDir(win, pathname, type))
       .on('raw', (event: string, subpath: string, details: unknown) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        if ((globalThis as any).MINDVAULT_NOTES_DEBUG_VERBOSE >= 3) {
+        if ((globalThis as any).AINCORE_NOTES_DEBUG_VERBOSE >= 3) {
           console.log('watcher: ', event, subpath, details)
         }
 
@@ -422,7 +422,7 @@ class Watcher {
               const fileInfo = await fsPromises.stat(pathname)
               if (fileInfo.mtime.getTime() - start.getTime() < duration) {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                if ((globalThis as any).MINDVAULT_NOTES_DEBUG_VERBOSE >= 3) {
+                if ((globalThis as any).AINCORE_NOTES_DEBUG_VERBOSE >= 3) {
                   console.log(
                     `Ignoring file event after "stat": current="${currentTime.toISOString()}", start="${start.toISOString()}", file="${fileInfo.mtime.toISOString()}".`
                   )

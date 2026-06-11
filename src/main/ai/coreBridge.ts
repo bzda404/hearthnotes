@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /**
- * Core Bridge — Notes 与 MindVault Core 的通信层
+ * Core Bridge — Notes 与 AinCore 的通信层
  *
- * 使用 @aincore/sdk 中 MindVaultClient + OAuth 2.0 PKCE 完成授权和通信。
+ * 使用 @aincore/sdk 中 AinCoreClient + OAuth 2.0 PKCE 完成授权和通信。
  * 替代原有的 modelHubClient.ts + udsClient.ts + coreSupervisor.ts。
  *
  * Notes 作为 Core 应用市场的第一个内置应用:
@@ -13,7 +13,7 @@
  *   - token 过期前自动刷新 (由 SDK getAccessToken() 处理)
  *   - 运行时 Core 被 kill 后自动重连（指数退避）
  */
-import { MindVaultClient, generatePKCE } from '@aincore/sdk'
+import { AinCoreClient, generatePKCE } from '@aincore/sdk'
 import type { OAuthTokenSet, OAuthClientConfig } from '@aincore/sdk'
 import type {
   AutocompleteRequest,
@@ -46,13 +46,13 @@ const RECONNECT_MAX_ATTEMPTS = 10
 const RECONNECT_MAX_DELAY_MS = 32_000 // 2^5 * 2000 = 64000, capped at 32s
 
 // ============================================================
-// MindVaultClient singleton
+// AinCoreClient singleton
 // ============================================================
 
-const client = new MindVaultClient({
-  name: 'MindVault Notes',
+const client = new AinCoreClient({
+  name: 'AinCore Notes',
   icon: '📝',
-  vendor: 'MindVault',
+  vendor: 'AinCore',
 })
 
 let oauthReady = false
@@ -159,11 +159,11 @@ export async function initializeCoreBridge(): Promise<boolean> {
       // 1. 发现 Core (带重试，Core 可能还在启动)
       const discovery = await discoverWithRetry()
       if (!discovery) {
-        console.log('[Notes Bridge] MindVault Core 未运行，AI 功能不可用')
+        console.log('[Notes Bridge] AinCore 未运行，AI 功能不可用')
         return false
       }
 
-      console.log(`[Notes Bridge] 已连接到 MindVault Core v${discovery.protocol_version}`)
+      console.log(`[Notes Bridge] 已连接到 AinCore v${discovery.protocol_version}`)
 
       // 2. 注册 OAuth 客户端
       const config = await client.registerOAuth()
@@ -351,7 +351,7 @@ function scheduleReconnectAttempt(): void {
 const MAX_RETRIES = 2
 
 /**
- * 检查 MindVault Core 是否可用 (兼容 aiService 接口)
+ * 检查 AinCore 是否可用 (兼容 aiService 接口)
  */
 export async function isModelHubAvailable(): Promise<boolean> {
   return ensureReady()
@@ -362,7 +362,7 @@ export async function isModelHubAvailable(): Promise<boolean> {
  */
 export async function autocomplete(req: AutocompleteRequest): Promise<AutocompleteResponse> {
   if (!oauthReady) {
-    throw new Error('MindVault Core 未连接，请先启动 Core')
+    throw new Error('AinCore 未连接，请先启动 Core')
   }
 
   const start = Date.now()

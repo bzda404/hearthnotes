@@ -34,14 +34,14 @@ export default function(): MenuItemConstructorOptions {
       label: t('menu.help.markdownReference'),
       click() {
         shell.openExternal(
-          'https://mindvault.app/docs/markdown-syntax'
+          'https://aincore.app/docs/markdown-syntax'
         )
       }
     },
     {
       label: t('menu.help.changelog'),
       click() {
-        shell.openExternal('https://github.com/bzda404/mindvault/releases')
+        shell.openExternal('https://github.com/bzda404/aincore/releases')
       }
     },
     {
@@ -65,19 +65,19 @@ export default function(): MenuItemConstructorOptions {
     {
       label: t('menu.help.askQuestion'),
       click() {
-        shell.openExternal('https://github.com/bzda404/mindvault/discussions')
+        shell.openExternal('https://github.com/bzda404/aincore/discussions')
       }
     },
     {
       label: t('menu.help.reportBug'),
       click() {
-        shell.openExternal('https://github.com/bzda404/mindvault/issues')
+        shell.openExternal('https://github.com/bzda404/aincore/issues')
       }
     },
     {
       label: t('menu.help.viewSource'),
       click() {
-        shell.openExternal('https://github.com/bzda404/mindvault')
+        shell.openExternal('https://github.com/bzda404/aincore')
       }
     },
     {
@@ -86,7 +86,7 @@ export default function(): MenuItemConstructorOptions {
     {
       label: t('menu.help.license'),
       click() {
-        shell.openExternal('https://github.com/bzda404/mindvault/blob/develop/LICENSE')
+        shell.openExternal('https://github.com/bzda404/aincore/blob/develop/LICENSE')
       }
     }
   ]

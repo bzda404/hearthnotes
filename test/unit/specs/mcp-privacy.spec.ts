@@ -13,7 +13,7 @@ const sentPopups = vi.hoisted(() => [] as SentPopup[])
 
 vi.mock('electron', () => ({
   app: {
-    getPath: vi.fn(() => '/tmp/mindvault-test'),
+    getPath: vi.fn(() => '/tmp/aincore-test'),
   },
   BrowserWindow: {
     getAllWindows: vi.fn(() => [{
@@ -44,7 +44,7 @@ describe('MCP privacy sentinel', () => {
   })
 
   it('shows a desensitized content preview before releasing read_note data', async() => {
-    const root = await mkdtemp(join(tmpdir(), 'mindvault-privacy-'))
+    const root = await mkdtemp(join(tmpdir(), 'aincore-privacy-'))
     const notePath = join(root, 'secret.md')
     await writeFile(notePath, '客户邮箱 alice@example.com，手机号 13812345678。', 'utf-8')
     setKnowledgeBasePath(root)
@@ -68,7 +68,7 @@ describe('MCP privacy sentinel', () => {
   })
 
   it('returns masked tool output when the user chooses desensitized transfer', async() => {
-    const root = await mkdtemp(join(tmpdir(), 'mindvault-privacy-'))
+    const root = await mkdtemp(join(tmpdir(), 'aincore-privacy-'))
     const notePath = join(root, 'secret.md')
     await writeFile(notePath, '联系方式：alice@example.com / 13812345678', 'utf-8')
     setKnowledgeBasePath(root)
@@ -102,7 +102,7 @@ describe('MCP privacy sentinel', () => {
   })
 
   it('rejects tool calls when the user denies the popup', async() => {
-    const root = await mkdtemp(join(tmpdir(), 'mindvault-privacy-'))
+    const root = await mkdtemp(join(tmpdir(), 'aincore-privacy-'))
     const notePath = join(root, 'secret.md')
     await writeFile(notePath, 'private', 'utf-8')
     setKnowledgeBasePath(root)

@@ -1,5 +1,5 @@
 /**
- * MindVault Core 客户端 — 通过 UDS 连接 Core
+ * AinCore 客户端 — 通过 UDS 连接 Core
  * 纯 Unix Domain Socket 通信，无 HTTP
  */
 import { udsClient } from './udsClient'
@@ -27,7 +27,7 @@ export interface RegisterLocalModelRequest {
 
 export class ModelHubClient {
   /**
-   * 检测 MindVault Core 是否可用
+   * 检测 AinCore 是否可用
    */
   async discover(): Promise<boolean> {
     return udsClient.connect()
@@ -61,7 +61,7 @@ export class ModelHubClient {
   async loadModel(id: string): Promise<void> {
     if (!udsClient.isConnected()) {
       const ok = await udsClient.connect()
-      if (!ok) throw new Error('无法连接到 MindVault Core，请先启动 Core')
+      if (!ok) throw new Error('无法连接到 AinCore，请先启动 Core')
     }
     await udsClient.call('internal.models.load', { id })
   }
@@ -83,7 +83,7 @@ export class ModelHubClient {
   async deleteModel(id: string): Promise<void> {
     if (!udsClient.isConnected()) {
       const ok = await udsClient.connect()
-      if (!ok) throw new Error('无法连接到 MindVault Core，请先启动 Core')
+      if (!ok) throw new Error('无法连接到 AinCore，请先启动 Core')
     }
     await udsClient.call('internal.models.delete', { id })
   }
@@ -94,7 +94,7 @@ export class ModelHubClient {
   async registerLocalModel(params: RegisterLocalModelRequest): Promise<Record<string, unknown>> {
     if (!udsClient.isConnected()) {
       const ok = await udsClient.connect()
-      if (!ok) throw new Error('无法连接到 MindVault Core，请先启动 Core')
+      if (!ok) throw new Error('无法连接到 AinCore，请先启动 Core')
     }
     return udsClient.call('internal.models.register', params) as Promise<Record<string, unknown>>
   }
@@ -110,7 +110,7 @@ export class ModelHubClient {
   }): Promise<string> {
     if (!udsClient.isConnected()) {
       const ok = await udsClient.connect()
-      if (!ok) throw new Error('无法连接到 MindVault Core')
+      if (!ok) throw new Error('无法连接到 AinCore')
     }
     const result = await udsClient.call('internal.chat.completions', params) as ChatResponse
     return result?.choices?.[0]?.message?.content ?? ''
@@ -122,7 +122,7 @@ export class ModelHubClient {
   async complete(prompt: string, options?: { max_tokens?: number; temperature?: number; stop?: string[] }): Promise<string> {
     if (!udsClient.isConnected()) {
       const ok = await udsClient.connect()
-      if (!ok) throw new Error('无法连接到 MindVault Core')
+      if (!ok) throw new Error('无法连接到 AinCore')
     }
     const result = await udsClient.call('internal.completions', { prompt, ...options }) as CompletionResponse
     return result?.choices?.[0]?.text ?? ''

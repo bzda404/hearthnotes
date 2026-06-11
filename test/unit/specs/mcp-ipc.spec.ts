@@ -7,7 +7,7 @@ const handlers = new Map<string, (...args: unknown[]) => unknown>()
 
 vi.mock('electron', () => ({
   app: {
-    getPath: vi.fn(() => path.join(os.tmpdir(), 'mindvault-test')),
+    getPath: vi.fn(() => path.join(os.tmpdir(), 'aincore-test')),
   },
   ipcMain: {
     handle: vi.fn((channel: string, handler: (...args: unknown[]) => unknown) => {
@@ -37,7 +37,7 @@ describe('MCP IPC handlers', () => {
     const { registerMCPHandlers } = await import('main_renderer/ipc/mcp')
     registerMCPHandlers()
 
-    const kbPath = path.join(os.tmpdir(), 'mindvault-notes')
+    const kbPath = path.join(os.tmpdir(), 'aincore-notes')
     await handlers.get('mt::mcp::set-knowledge-base')?.({}, kbPath)
     const status = await handlers.get('mt::mcp::status')?.({})
 

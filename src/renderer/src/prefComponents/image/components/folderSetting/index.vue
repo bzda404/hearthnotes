@@ -28,7 +28,7 @@
       <template #head>
         <bool
           :description="t('preferences.image.folderSetting.preferRelative')"
-          more="https://github.com/bzda404/mindvault/blob/develop/docs/end-user/IMAGES.md"
+          more="https://github.com/bzda404/aincore/blob/develop/docs/end-user/IMAGES.md"
           :bool="imagePreferRelativeDirectory"
           :on-change="(value) => onSelectChange('imagePreferRelativeDirectory', value)"
         />

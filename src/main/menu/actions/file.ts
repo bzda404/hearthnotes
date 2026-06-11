@@ -613,7 +613,7 @@ ipcMain.on('mt::format-link-click', (e, { data, dirname }: FormatLinkPayload) =>
   }
 
   if (pathname) {
-    // decodeURIComponent() CommonMark #503, allow percent encoded path names to open files. https://github.com/bzda404/mindvault/issues/57
+    // decodeURIComponent() CommonMark #503, allow percent encoded path names to open files. https://github.com/bzda404/aincore/issues/57
     pathname = path.normalize(decodeURIComponent(pathname))
     if (isMarkdownFile(pathname)) {
       const innerWin = BrowserWindow.fromWebContents(e.sender)

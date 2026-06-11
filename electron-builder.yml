@@ -1,5 +1,5 @@
-appId: com.mindvault.notes
-productName: MindVault Notes
+appId: com.aincore.notes
+productName: AinCore Notes
 directories:
   buildResources: build
   output: ./dist
@@ -13,7 +13,7 @@ files:
   # ================================
   # Do not bundle these files
   # ================================
-  - '!node_modules/dragula/resources'
+  - '!node_modules/dragula/Resources'
   - '!node_modules/**/*.js.map'
   - '!node_modules/**/*.cjs.map'
   - '!node_modules/**/*.mjs.map'
@@ -91,14 +91,14 @@ fileAssociations:
     role: Editor
     icon: icons/md.ico
 win:
-  executableName: mindvault-notes
-  artifactName: 'mindvault-notes-win-${arch}-${version}.${ext}'
+  executableName: aincore-notes
+  artifactName: 'aincore-notes-win-${arch}-${version}.${ext}'
   target:
     - target: 'nsis'
     - target: 'zip'
   icon: static/icon.ico
 nsis:
-  artifactName: 'mindvault-notes-win-${arch}-${version}-setup.${ext}'
+  artifactName: 'aincore-notes-win-${arch}-${version}-setup.${ext}'
   shortcutName: ${productName}
   uninstallDisplayName: ${productName}
   createDesktopShortcut: true
@@ -108,7 +108,7 @@ nsis:
   perMachine: false
   include: windows/installer.nsh
 mac:
-  artifactName: 'mindvault-notes-mac-${arch}-${version}.${ext}'
+  artifactName: 'aincore-notes-mac-${arch}-${version}.${ext}'
   entitlementsInherit: build/mac/entitlements.mac.plist
   extendInfo:
     - NSCameraUsageDescription: Application requests access to the device's camera.
@@ -120,7 +120,7 @@ mac:
     - dmg
     - zip
 dmg:
-  artifactName: 'mindvault-notes-mac-${arch}-${version}.${ext}'
+  artifactName: 'aincore-notes-mac-${arch}-${version}.${ext}'
   contents:
     - x: 410
       y: 240
@@ -130,18 +130,18 @@ dmg:
       y: 240
       type: 'file'
 linux:
-  artifactName: 'mindvault-notes-linux-${version}.${ext}'
-  executableName: 'mindvault-notes'
+  artifactName: 'aincore-notes-linux-${version}.${ext}'
+  executableName: 'aincore-notes'
   description: 'Local AI-powered knowledge management platform — notes editor.'
-  maintainer: 'MindVault'
+  maintainer: 'AinCore'
   category: 'Office;TextEditor;Utility'
   mimeTypes:
     - 'text/markdown'
   icon: 'static/icon.png'
   desktop:
     entry:
-      StartupWMClass: 'mindvault-notes'
-      Keywords: 'mindvault-notes;mindvault;'
+      StartupWMClass: 'aincore-notes'
+      Keywords: 'aincore-notes;aincore;'
   target:
     - AppImage
     - snap

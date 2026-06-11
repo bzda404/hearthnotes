@@ -42,9 +42,9 @@ declare namespace NodeJS {
   }
   interface Global {
     __static: string
-    MINDVAULT_NOTES_DEBUG: boolean
-    MINDVAULT_NOTES_DEBUG_VERBOSE: boolean
-    MINDVAULT_NOTES_SAFE_MODE: boolean
+    AINCORE_NOTES_DEBUG: boolean
+    AINCORE_NOTES_DEBUG_VERBOSE: boolean
+    AINCORE_NOTES_SAFE_MODE: boolean
   }
 }
 
@@ -53,8 +53,8 @@ declare namespace NodeJS {
 // eslint-disable-next-line no-var
 declare var __static: string
 // eslint-disable-next-line no-var
-declare var MINDVAULT_NOTES_DEBUG: boolean
+declare var AINCORE_NOTES_DEBUG: boolean
 // eslint-disable-next-line no-var
-declare var MINDVAULT_NOTES_DEBUG_VERBOSE: boolean
+declare var AINCORE_NOTES_DEBUG_VERBOSE: boolean
 // eslint-disable-next-line no-var
-declare var MINDVAULT_NOTES_SAFE_MODE: boolean
+declare var AINCORE_NOTES_SAFE_MODE: boolean

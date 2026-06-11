@@ -2,7 +2,7 @@
  * 1B 模型重排器
  * 利用常驻内存的 1B 模型进行低消耗语义重排
  *
- * 原理：构造 YES/NO 判断 Prompt，让常驻 MindVault Core 的本地模型
+ * 原理：构造 YES/NO 判断 Prompt，让常驻 AinCore 的本地模型
  * 只生成一个极短判断。不可用时回退到 BM25 分数。
  */
 import { modelHubClient } from '../ai/modelHubClient'

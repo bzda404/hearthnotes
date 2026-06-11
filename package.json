@@ -1,10 +1,10 @@
 {
-  "name": "hearthnotes",
-  "version": "1.0.0-rc.1",
-  "description": "Hearthnotes \u2014 Local AI-powered knowledge management",
+  "name": "aincore-notes",
+  "version": "1.0.0-rc.2",
+  "description": "AinCore Notes — AI 驱动的本地知识管理应用：Markdown 编辑器、BM25 + RRF 三层搜索管线、MCP 协议服务端与隐私哨兵",
   "main": "./out/main/index.js",
   "private": true,
-  "homepage": "https://github.com/bzda404/hearthnotes",
+  "homepage": "https://github.com/bzda404/aincore-notes",
   "engines": {
     "node": ">=20.19.0",
     "pnpm": ">=10"
@@ -38,7 +38,7 @@
     "@element-plus/icons-vue": "^2.3.2",
     "@hfelix/electron-localshortcut": "^4.0.1",
     "@marktext/file-icons": "^1.0.6",
-    "@aincore/sdk": "github:bzda404/mindvault-sdk",
+    "@aincore/sdk": "^0.4.1",
     "@modelcontextprotocol/sdk": "^1.29.0",
     "@popperjs/core": "^2.11.8",
     "@vscode/ripgrep": "^1.18.0",

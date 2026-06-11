@@ -163,7 +163,7 @@
           </div>
           <cur-select
             :description="t('exportSettings.theme.theme')"
-            more="https://github.com/bzda404/mindvault/blob/develop/docs/EXPORT_THEMES.md"
+            more="https://github.com/bzda404/aincore/blob/develop/docs/EXPORT_THEMES.md"
             :value="theme"
             :options="themeList"
             :on-change="(value: unknown) => onSelectChange('theme', value)"

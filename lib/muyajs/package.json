@@ -43,8 +43,8 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bzda404/mindvault.git",
+    "url": "git+https://github.com/bzda404/aincore.git",
     "directory": "packages/muyajs"
   },
-  "homepage": "https://github.com/bzda404/mindvault#readme"
+  "homepage": "https://github.com/bzda404/aincore#readme"
 }

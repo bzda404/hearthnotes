@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-require-imports */
 // @ts-nocheck
 /**
- * Cross-platform postinstall for Hearthnotes (standalone repo).
+ * Cross-platform postinstall for AinCore Notes (standalone repo).
  * Patches native-keymap for C++20, downloads Electron,
  * rebuilds native modules for Electron's ABI, generates locale files.
  */

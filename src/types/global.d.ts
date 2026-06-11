@@ -33,8 +33,8 @@ import type {
 
 declare global {
   // ---- Build-time defines (electron-vite `define`) ----
-  const MINDVAULT_NOTES_VERSION: string
-  const MINDVAULT_NOTES_VERSION_STRING: string
+  const AINCORE_NOTES_VERSION: string
+  const AINCORE_NOTES_VERSION_STRING: string
   const __static: string
 
   // ---- contextBridge surface ----

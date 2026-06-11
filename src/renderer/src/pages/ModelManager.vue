@@ -402,10 +402,10 @@ const coreDetail = computed(() => {
   return aiStatus.value?.core.defaultModel?.reason || t('modelManager.installModelHint')
 })
 
-// 已连接应用（实际应从 MindVault Core API 获取）
+// 已连接应用（实际应从 AinCore API 获取）
 const linkedApps = ref([
   {
-    name: 'MindVault Note',
+    name: 'AinCore Note',
     icon: 'M',
     color: '#1a73e8',
     model: 'Qwen3.5-0.8B',

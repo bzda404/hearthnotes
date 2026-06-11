@@ -8,7 +8,7 @@ const pandocCommand = 'pandoc'
 
 const getCommand = (): string => {
   if (envPathExists()) {
-    return process.env.MINDVAULT_NOTES_PANDOC as string
+    return process.env.AINCORE_NOTES_PANDOC as string
   }
   return pandocCommand
 }
@@ -57,7 +57,7 @@ pandoc.exists = (): boolean => {
 }
 
 const envPathExists = (): boolean => {
-  return !!process.env.MINDVAULT_NOTES_PANDOC && isFile2(process.env.MINDVAULT_NOTES_PANDOC)
+  return !!process.env.AINCORE_NOTES_PANDOC && isFile2(process.env.AINCORE_NOTES_PANDOC)
 }
 
 export default pandoc

@@ -90,7 +90,7 @@ export default function(keybindings: Keybindings): MenuItemConstructorOptions {
     submenu
   }
 
-  if (global.MINDVAULT_NOTES_DEBUG) {
+  if (global.AINCORE_NOTES_DEBUG) {
     submenu.push({
       type: 'separator'
     })

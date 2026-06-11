@@ -8,7 +8,7 @@ const readFile = vi.fn(async() => '')
 
 vi.mock('electron', () => ({
   app: {
-    getPath: vi.fn(() => path.join(os.tmpdir(), 'mindvault-user-data')),
+    getPath: vi.fn(() => path.join(os.tmpdir(), 'aincore-user-data')),
   },
 }))
 
@@ -45,7 +45,7 @@ describe('MCP telemetry persistence', () => {
     })
 
     await vi.waitFor(() => expect(appendFile).toHaveBeenCalled())
-    const userDataDir = path.join(os.tmpdir(), 'mindvault-user-data')
+    const userDataDir = path.join(os.tmpdir(), 'aincore-user-data')
     expect(mkdir).toHaveBeenCalledWith(userDataDir, { recursive: true })
     expect(appendFile).toHaveBeenCalledWith(
       path.join(userDataDir, 'mcp-audit-log.jsonl'),

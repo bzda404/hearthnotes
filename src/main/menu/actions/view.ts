@@ -26,13 +26,13 @@ const toggleLayout = (win: Win, type: string): void => {
 }
 
 export const debugToggleDevTools = (win: Win): void => {
-  if (win && global.MINDVAULT_NOTES_DEBUG) {
+  if (win && global.AINCORE_NOTES_DEBUG) {
     win.webContents.toggleDevTools()
   }
 }
 
 export const debugReloadWindow = (win: Win): void => {
-  if (win && global.MINDVAULT_NOTES_DEBUG) {
+  if (win && global.AINCORE_NOTES_DEBUG) {
     ipcMain.emit('window-reload-by-id', win.id)
   }
 }

@@ -204,7 +204,7 @@ class EditorWindow extends BaseWindow {
       const { response } = await dialog.showMessageBox(win!, {
         type: 'warning',
         buttons: ['Close', 'Reload', 'Keep It Open'],
-        message: 'MindVault 已崩溃',
+        message: 'AinCore 已崩溃',
         detail: msg
       })
 

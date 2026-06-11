@@ -1,13 +1,13 @@
 /**
- * UDS 客户端 — 通过 Unix Domain Socket 连接 MindVault Core
+ * UDS 客户端 — 通过 Unix Domain Socket 连接 AinCore
  * 替代 HTTP fetch，绕过 TCP/IP 协议栈
  */
 import { connect, type Socket } from 'net'
 import { platform } from 'os'
 
 const SOCKET_PATH = platform() === 'win32'
-  ? '\\\\.\\pipe\\mindvault'
-  : '/tmp/mindvault.sock'
+  ? '\\\\.\\pipe\\aincore'
+  : '/tmp/aincore.sock'
 
 interface PendingCall {
   resolve: (value: unknown) => void
@@ -22,7 +22,7 @@ export class UDSClient {
   private connected = false
 
   /**
-   * 连接到 MindVault Core UDS 服务器
+   * 连接到 AinCore UDS 服务器
    */
   async connect(): Promise<boolean> {
     if (this.connected) return true
@@ -67,7 +67,7 @@ export class UDSClient {
   async call(method: string, params: Record<string, unknown> = {}): Promise<unknown> {
     if (!this.connected || !this.socket) {
       const reconnected = await this.connect()
-      if (!reconnected) throw new Error('无法连接到 MindVault Core')
+      if (!reconnected) throw new Error('无法连接到 AinCore')
     }
 
     const id = ++this.requestId

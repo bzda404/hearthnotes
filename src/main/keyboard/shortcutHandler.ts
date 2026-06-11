@@ -136,9 +136,9 @@ class Keybindings {
 
     // Notify key mapper when the keyboard layout was changed.
     keyboardLayoutMonitor.addListener(({ layout, keymap }: KeyboardInfo) => {
-      const globalDebug = (globalThis as typeof globalThis & { MINDVAULT_NOTES_DEBUG?: boolean })
-        .MINDVAULT_NOTES_DEBUG
-      if (globalDebug && process.env.MINDVAULT_NOTES_DEBUG_KEYBOARD) {
+      const globalDebug = (globalThis as typeof globalThis & { AINCORE_NOTES_DEBUG?: boolean })
+        .AINCORE_NOTES_DEBUG
+      if (globalDebug && process.env.AINCORE_NOTES_DEBUG_KEYBOARD) {
         console.log('[DEBUG] Keyboard layout changed:\n', layout)
       }
       electronLocalshortcut.setKeyboardLayout(layout, keymap)
@@ -157,8 +157,8 @@ class Keybindings {
   }
 
   _loadLocalKeybindings(): void {
-    const safeMode = (globalThis as typeof globalThis & { MINDVAULT_NOTES_SAFE_MODE?: boolean })
-      .MINDVAULT_NOTES_SAFE_MODE
+    const safeMode = (globalThis as typeof globalThis & { AINCORE_NOTES_SAFE_MODE?: boolean })
+      .AINCORE_NOTES_SAFE_MODE
     if (safeMode || !isFile2(this.configPath)) {
       return
     }

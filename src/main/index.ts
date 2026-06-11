@@ -17,8 +17,8 @@ import { initializeAI, shutdownAI } from './ipc/ai'
 import { startMCPServer, stopMCPServer } from './mcp/server'
 
 // Set version strings into global and process.versions
-process.env.MINDVAULT_NOTES_VERSION = MINDVAULT_NOTES_VERSION
-process.env.MINDVAULT_NOTES_VERSION_STRING = MINDVAULT_NOTES_VERSION_STRING
+process.env.AINCORE_NOTES_VERSION = AINCORE_NOTES_VERSION
+process.env.AINCORE_NOTES_VERSION_STRING = AINCORE_NOTES_VERSION_STRING
 
 // -----------------------------------------------
 // Exception handling and logging setup
@@ -55,7 +55,7 @@ initializeLogger(appEnvironment)
 // Handles native level crashes
 crashReporter.start({
   companyName: '',
-  productName: 'mindvault',
+  productName: 'aincore',
   uploadToServer: false, // collect locally
   compress: true
 })
@@ -85,7 +85,7 @@ if (!process.mas && process.env.NODE_ENV !== 'development') {
 registerSandboxIpcHandlers()
 
 // Windows-specific AppUserModelID
-electronApp.setAppUserModelId('com.mindvault.app')
+electronApp.setAppUserModelId('com.aincore.app')
 
 // Dev shortcuts and reload suppression
 app.on('browser-window-created', (_, window) => {
@@ -103,8 +103,8 @@ try {
     : ''
   log.error(t('error.initializationFailed', { hint: msgHint }), errorObj)
 
-  const EXIT_ON_ERROR = !!process.env.MINDVAULT_NOTES_EXIT_ON_ERROR
-  const SHOW_ERROR_DIALOG = !process.env.MINDVAULT_NOTES_ERROR_INTERACTION
+  const EXIT_ON_ERROR = !!process.env.AINCORE_NOTES_EXIT_ON_ERROR
+  const SHOW_ERROR_DIALOG = !process.env.AINCORE_NOTES_ERROR_INTERACTION
   if (!EXIT_ON_ERROR && SHOW_ERROR_DIALOG) {
     dialog.showErrorBox(
       t('error.startupError'),
@@ -116,18 +116,18 @@ try {
 const appController = new App(accessor, args as unknown as { _: string[] })
 appController.init()
 
-// Initialize MindVault AI via CoreBridge OAuth PKCE (non-blocking)
+// Initialize AinCore AI via CoreBridge OAuth PKCE (non-blocking)
 // Core may still be starting — coreBridge has built-in retry logic
 app.whenReady().then(() => {
   initializeAI().catch((err) => {
-    log.warn('[MindVault] AI CoreBridge initialization failed (non-fatal):', err)
-    log.warn('[MindVault] Notes will continue without AI features. Start Core and restart Notes to enable AI.')
+    log.warn('[AinCore] AI CoreBridge initialization failed (non-fatal):', err)
+    log.warn('[AinCore] Notes will continue without AI features. Start Core and restart Notes to enable AI.')
   })
 })
 
 // Start MCP server for external LLM clients
 startMCPServer().catch((err) => {
-  log.warn('[MindVault] MCP server start failed (non-fatal):', err)
+  log.warn('[AinCore] MCP server start failed (non-fatal):', err)
 })
 
 // Quit when all windows are closed (except on macOS)

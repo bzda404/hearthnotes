@@ -17,7 +17,7 @@ import { resetMCPTelemetry } from 'main_renderer/mcp/telemetry'
 
 vi.mock('electron', () => ({
   app: {
-    getPath: vi.fn(() => '/tmp/mindvault-test'),
+    getPath: vi.fn(() => '/tmp/aincore-test'),
   },
 }))
 
@@ -34,7 +34,7 @@ describe('MCP Handlers', () => {
   })
 
   it('should search markdown notes after setting a knowledge base path', async() => {
-    const root = await mkdtemp(join(tmpdir(), 'mindvault-kb-'))
+    const root = await mkdtemp(join(tmpdir(), 'aincore-kb-'))
     const notePath = join(root, 'note.md')
     await writeFile(notePath, 'Local AI notes mention vector search and MCP.', 'utf-8')
 
@@ -55,7 +55,7 @@ describe('MCP Handlers', () => {
   })
 
   it('should build and use the shared BM25 search index for MCP search', async() => {
-    const root = await mkdtemp(join(tmpdir(), 'mindvault-kb-'))
+    const root = await mkdtemp(join(tmpdir(), 'aincore-kb-'))
     await writeFile(join(root, 'alpha.md'), 'privacy local model security sentinel', 'utf-8')
     await writeFile(join(root, 'beta.md'), 'unrelated grocery list', 'utf-8')
 
@@ -68,8 +68,8 @@ describe('MCP Handlers', () => {
   })
 
   it('should reject reads outside the knowledge base', async() => {
-    const root = await mkdtemp(join(tmpdir(), 'mindvault-kb-'))
-    const outside = await mkdtemp(join(tmpdir(), 'mindvault-outside-'))
+    const root = await mkdtemp(join(tmpdir(), 'aincore-kb-'))
+    const outside = await mkdtemp(join(tmpdir(), 'aincore-outside-'))
     const outsideNote = join(outside, 'secret.md')
     await writeFile(outsideNote, 'secret', 'utf-8')
 
@@ -81,7 +81,7 @@ describe('MCP Handlers', () => {
   })
 
   it('should reject paths in sibling directories with the same prefix', async() => {
-    const parent = await mkdtemp(join(tmpdir(), 'mindvault-prefix-'))
+    const parent = await mkdtemp(join(tmpdir(), 'aincore-prefix-'))
     const root = join(parent, 'notes')
     const sibling = join(parent, 'notes-private')
     await mkdir(root)
@@ -98,7 +98,7 @@ describe('MCP Handlers', () => {
   })
 
   it('should reject list_notes paths that escape the knowledge base', async() => {
-    const parent = await mkdtemp(join(tmpdir(), 'mindvault-list-'))
+    const parent = await mkdtemp(join(tmpdir(), 'aincore-list-'))
     const root = join(parent, 'notes')
     const sibling = join(parent, 'notes-private')
     await mkdir(root)
@@ -113,7 +113,7 @@ describe('MCP Handlers', () => {
   })
 
   it('should reject search_notes paths that escape the knowledge base', async() => {
-    const parent = await mkdtemp(join(tmpdir(), 'mindvault-search-'))
+    const parent = await mkdtemp(join(tmpdir(), 'aincore-search-'))
     const root = join(parent, 'notes')
     const sibling = join(parent, 'notes-private')
     await mkdir(root)

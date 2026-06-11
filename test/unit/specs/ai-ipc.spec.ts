@@ -17,7 +17,7 @@ vi.mock('main_renderer/ai/coreBridge', () => ({
   getCoreRuntimeStatus: vi.fn(async() => ({
     running: true,
     transport: 'uds',
-    socketPath: '/tmp/mindvault.sock',
+    socketPath: '/tmp/aincore.sock',
     loadedModel: 'qwen-local',
     status: 'ready',
   })),
@@ -89,6 +89,6 @@ describe('AI IPC handlers (Core Bridge)', () => {
     const result = await handler!({ sender: {} }) as Record<string, unknown>
     expect(result.status).toBe('ready')
     expect(result.transport).toBe('uds')
-    expect(result.socketPath).toBe('/tmp/mindvault.sock')
+    expect(result.socketPath).toBe('/tmp/aincore.sock')
   })
 })

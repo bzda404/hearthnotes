@@ -1,5 +1,5 @@
 /**
- * AI IPC 处理器 — 通过 MindVault Core OAuth SDK 提供 AI 功能
+ * AI IPC 处理器 — 通过 AinCore OAuth SDK 提供 AI 功能
  *
  * Notes 使用 @aincore/sdk 和 coreBridge.ts 取代原有的底层连接。
  * 模型管理移到 Core Admin UI；Notes 只负责 AI 功能的 IPC 分发。
@@ -11,7 +11,7 @@ import type { AISidecarStatus } from '@shared/types/aiTypes'
 
 const lightweightPolicy = {
   maxParameterBillions: 1,
-  description: 'MindVault Core 当前只加载 ≤1B 参数的本地量化模型',
+  description: 'AinCore 当前只加载 ≤1B 参数的本地量化模型',
 }
 
 export const registerAIHandlers = (): void => {
@@ -60,7 +60,7 @@ async function getAIStatus(): Promise<AISidecarStatus> {
       }
       : null,
     transport: 'uds',
-    socketPath: '/tmp/mindvault.sock',
+    socketPath: '/tmp/aincore.sock',
     core: {
       running: ready,
       startedByNote: false,
@@ -74,18 +74,18 @@ async function getAIStatus(): Promise<AISidecarStatus> {
     ramMB: null,
     tokPerSec: null,
     lightweightPolicy,
-    error: ready ? (coreStatus?.status === 'ready' ? null : 'MindVault Core 已连接，但模型尚未运行') : 'MindVault Core 未运行',
+    error: ready ? (coreStatus?.status === 'ready' ? null : 'AinCore 已连接，但模型尚未运行') : 'AinCore 未运行',
   }
 }
 
 export async function initializeAI(): Promise<void> {
   const connected = await initializeCoreBridge()
   if (connected) {
-    console.log('[MindVault Notes] 已通过 OAuth 连接到 MindVault Core')
+    console.log('[AinCore Notes] 已通过 OAuth 连接到 AinCore')
     // Start periodic health check for auto-reconnection
     startHealthCheck()
   } else {
-    console.log('[MindVault Notes] MindVault Core 未运行，AI 功能不可用')
+    console.log('[AinCore Notes] AinCore 未运行，AI 功能不可用')
   }
 }
 

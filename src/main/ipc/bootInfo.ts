@@ -9,9 +9,9 @@ const ENV_ALLOWLIST = [
   'NODE_ENV',
   'PERF_TESTING',
   'APPIMAGE',
-  'MINDVAULT_NOTES_VERSION',
-  'MINDVAULT_NOTES_VERSION_STRING',
-  'MINDVAULT_NOTES_RIPGREP_PATH',
+  'AINCORE_NOTES_VERSION',
+  'AINCORE_NOTES_VERSION_STRING',
+  'AINCORE_NOTES_RIPGREP_PATH',
   'PATH',
   'HOME'
 ]
@@ -26,8 +26,8 @@ const pickEnv = (): Record<string, string> => {
 }
 
 const resolveRipgrepBinary = (): string => {
-  if (process.env.MINDVAULT_NOTES_RIPGREP_PATH) {
-    return process.env.MINDVAULT_NOTES_RIPGREP_PATH
+  if (process.env.AINCORE_NOTES_RIPGREP_PATH) {
+    return process.env.AINCORE_NOTES_RIPGREP_PATH
   }
   return rgPath.replace(/\bapp\.asar\b/, 'app.asar.unpacked')
 }

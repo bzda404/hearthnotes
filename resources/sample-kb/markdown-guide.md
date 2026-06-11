@@ -1,6 +1,6 @@
 # Markdown Formatting Guide
 
-A quick guide to formatting notes in MindVault Notes.
+A quick guide to formatting notes in AinCore Notes.
 
 ## Text Formatting
 
@@ -29,7 +29,7 @@ A quick guide to formatting notes in MindVault Notes.
 
 ```javascript
 function hello() {
-  console.log('Hello, MindVault!')
+  console.log('Hello, AinCore!')
 }
 ```
 

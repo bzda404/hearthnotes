@@ -14,7 +14,7 @@ const stoppedWithoutModelStatus = {
   status: 'stopped',
   model: null,
   transport: 'uds',
-  socketPath: '/tmp/mindvault.sock',
+  socketPath: '/tmp/aincore.sock',
   core: {
     running: true,
     startedByNote: true,
@@ -31,7 +31,7 @@ const stoppedWithoutModelStatus = {
   tokPerSec: null,
   lightweightPolicy: {
     maxParameterBillions: 1,
-    description: 'MindVault Core 当前只加载 ≤1B 参数的本地量化模型',
+    description: 'AinCore 当前只加载 ≤1B 参数的本地量化模型',
   },
   error: null,
 }

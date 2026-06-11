@@ -1,6 +1,6 @@
 # Keyboard Shortcuts
 
-Quick reference for common actions in MindVault Notes.
+Quick reference for common actions in AinCore Notes.
 
 ## Editor
 
@@ -34,5 +34,5 @@ Quick reference for common actions in MindVault Notes.
 ## Tips
 
 - Press `Ctrl+/` to see all available shortcuts
-- AI features require a model loaded in MindVault Core
+- AI features require a model loaded in AinCore
 - You can customize shortcuts in Preferences → Keybindings
