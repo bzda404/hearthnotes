@@ -1,0 +1,40 @@
+node_modules
+dist
+out
+.DS_Store
+.prettierignore
+.eslintcache
+*.log*
+.trae/
+.cursor/
+doc/
+temp/
+logs/
+test-results/
+playwright-report/
+*.min.json
+.claude/settings.local.json
+.claude/
+.agents/
+.agent/
+.idea/
+# Binary bundles and archives
+*.zip
+*.dmg
+*.AppImage
+*.deb
+*.rpm
+*.snap
+*.exe
+*.nupkg
+*.blockmap
+# Model files
+*.gguf
+*.bin
+# Editor/IDE files
+*.swp
+.qoder/
+*.swo
+*~
+# macOS
+._*

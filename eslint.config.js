@@ -1,0 +1,193 @@
+import eslintJs from '@eslint/js'
+import pluginVue from 'eslint-plugin-vue'
+import pluginHtml from 'eslint-plugin-html'
+import pluginI18nJson from 'eslint-plugin-i18n-json'
+import pluginJsonc from 'eslint-plugin-jsonc'
+import neostandard from 'neostandard'
+import babelParser from '@babel/eslint-parser'
+import tseslint from 'typescript-eslint'
+import vueParser from 'vue-eslint-parser'
+import globals from 'globals'
+const { configs: js } = eslintJs
+
+export default [
+  // 0. Global ignores (must be first)
+  {
+    ignores: [
+      '.claude/**',
+      '**/out/**',
+      '**/dist/**',
+      'lib/muyajs/lib/assets/libs/**',
+      'lib/muyajs/lib/parser/marked/urlify.js',
+      'src/renderer/src/assets/symbolIcon/index.js',
+      '**/*.min.json',
+      'test-results/**',
+      'playwright-report/**'
+    ]
+  },
+
+  // 1. ESLint core recommended
+  js.recommended,
+  ...neostandard(),
+
+  // 2. typescript-eslint recommended — scoped to TS files only.
+  ...tseslint.configs.recommended.map((config) => ({
+    ...config,
+    files: ['**/*.ts', '**/*.tsx']
+  })),
+
+  // 3. TypeScript files: parser + rules
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module'
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        MARKTEXT_VERSION_STRING: 'readonly',
+        MARKTEXT_VERSION: 'readonly',
+        __static: 'readonly'
+      }
+    },
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }
+      ],
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        { prefer: 'type-imports', fixStyle: 'inline-type-imports' }
+      ],
+      '@typescript-eslint/no-non-null-assertion': 'warn',
+      'no-unused-vars': 'off',
+      'no-undef': 'off',
+      'no-redeclare': 'off',
+      'no-extra-semi': 'off',
+      '@stylistic/indent': ['error', 2, { SwitchCase: 1, ignoreComments: true }],
+      '@stylistic/semi': ['error', 'never'],
+      '@stylistic/space-before-function-paren': ['error', 'never'],
+      '@stylistic/arrow-parens': 'off',
+      '@stylistic/no-mixed-operators': 'off'
+    }
+  },
+
+  // 4. Vue plugin baseline
+  ...pluginVue.configs['flat/recommended'],
+
+  // 5. Vue files: vue-eslint-parser with delegated TS sub-parser
+  {
+    files: ['**/*.vue'],
+    languageOptions: {
+      parser: vueParser,
+      parserOptions: {
+        parser: {
+          ts: tseslint.parser,
+          tsx: tseslint.parser,
+          js: babelParser,
+          jsx: babelParser
+        },
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        extraFileExtensions: ['.vue'],
+        requireConfigFile: false
+      },
+      globals: { ...globals.browser }
+    },
+    rules: {
+      'vue/multi-word-component-names': 'off',
+      'vue/require-default-prop': 'off'
+    }
+  },
+
+  // 6. JS/MJS/CJS files: Babel parser for muyajs and symbolIcon
+  {
+    files: [
+      'lib/muyajs/**/*.js',
+      'lib/muyajs/**/*.mjs',
+      'lib/muyajs/**/*.cjs',
+      'src/renderer/src/assets/symbolIcon/**/*.js',
+      'eslint.config.js'
+    ],
+    plugins: {
+      html: pluginHtml
+    },
+    languageOptions: {
+      parser: babelParser,
+      parserOptions: {
+        requireConfigFile: false,
+        ecmaVersion: 'latest',
+        sourceType: 'module'
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        MARKTEXT_VERSION_STRING: 'readonly',
+        MARKTEXT_VERSION: 'readonly',
+        __static: 'readonly'
+      }
+    },
+    rules: {
+      '@stylistic/indent': ['error', 2, { SwitchCase: 1, ignoreComments: true }],
+      '@stylistic/semi': ['error', 'never'],
+      '@stylistic/space-before-function-paren': ['error', 'never'],
+      '@stylistic/arrow-parens': 'off',
+      '@stylistic/no-mixed-operators': 'off',
+      'no-return-await': 'error',
+      'no-return-assign': 'error',
+      'no-new': 'error',
+      'no-console': 'off',
+      'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+      'require-atomic-updates': 'off',
+      'prefer-const': 'off',
+      'no-prototype-builtins': 'off'
+    },
+    ignores: ['node_modules', 'lib/muyajs/dist/**/*', 'lib/muyajs/webpack.config.js']
+  },
+
+  // 7. Test files: add Vitest globals
+  {
+    files: ['test/**/*.js', 'test/**/*.ts'],
+    languageOptions: {
+      globals: { ...globals.vitest }
+    }
+  },
+
+  // 8. Relax behavioral rules for the legacy muya editor engine (JS only)
+  {
+    files: ['lib/muyajs/lib/**/*.js'],
+    rules: {
+      'no-sequences': 'off',
+      'no-unused-expressions': 'off',
+      'no-return-assign': 'off',
+      'no-extra-semi': 'off',
+      eqeqeq: 'warn',
+      'no-var': 'warn'
+    }
+  },
+
+  // 9. JSON validation
+  ...pluginJsonc.configs['flat/recommended-with-json'],
+
+  // 10. i18n JSON locales
+  {
+    files: ['src/shared/i18n/locales/*.json'],
+    plugins: {
+      'i18n-json': pluginI18nJson
+    },
+    rules: {
+      'i18n-json/valid-json': 'error',
+      'i18n-json/sorted-keys': 'warn',
+      'i18n-json/identical-keys': [
+        'error',
+        {
+          filePath: 'src/shared/i18n/locales/en.json'
+        }
+      ]
+    }
+  }
+]
