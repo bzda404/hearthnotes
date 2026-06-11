@@ -3,14 +3,14 @@ import type { BrowserWindow } from 'electron'
 import { TypedEmitter } from '@shared/types/typedEmitter'
 
 /**
- * A MarkText window.
+ * A AinCore Notes window.
  * @property id Identifier (= browserWindow.id) or null during initialization.
  * @property browserWindow The browser window.
  * @property lifecycle The window lifecycle state.
  * @property type The window type.
  */
 
-// Window type marktext support.
+// Window type aincoreNotes support.
 export const WindowType = {
   BASE: 'base', // You shold never create a `BASE` window.
   EDITOR: 'editor',

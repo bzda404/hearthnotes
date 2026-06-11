@@ -107,19 +107,19 @@
       "support": "支持 AinCore",
       "license": "许可证",
       "checkForUpdates": "检查更新",
-      "aboutMarkText": "关于 AinCore",
+      "aboutAinCoreNotes": "关于 AinCore",
       "about": "关于",
       "checkUpdates": "检查更新"
     },
-    "marktext": {
+    "aincoreNotes": {
       "title": "AinCore",
-      "marktext": "AinCore",
+      "aincoreNotes": "AinCore",
       "about": "关于 AinCore",
       "checkUpdates": "检查更新…",
       "preferences": "偏好设置",
       "services": "服务",
       "hide": "隐藏 AinCore",
-      "hideMarkText": "隐藏 AinCore",
+      "hideAinCoreNotes": "隐藏 AinCore",
       "hideOthers": "隐藏其他",
       "showAll": "显示全部",
       "quit": "退出 AinCore"

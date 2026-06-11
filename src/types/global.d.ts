@@ -230,7 +230,7 @@ declare global {
     rgPath: string
     // Set by the legacy editor store at runtime; consumed by muya internals.
     DIRNAME: string
-    marktext?: {
+    aincoreNotes?: {
       env?: { windowId: number; [key: string]: unknown }
       initialState?: {
         codeFontFamily?: string | null

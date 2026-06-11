@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any --
  * Bridge to the legacy JavaScript muya/ tree. Every member is intentionally
  * `any` because the underlying src/muya/ source is .js and won't be re-typed
- * before the upstream TS muya (https://github.com/marktext/muya) replaces it.
+ * before the upstream TS muya (https://github.com/aincoreNotes/muya) replaces it.
  * Delete this file the day upstream lands; see packages/website/content/docs/dev/TYPESCRIPT.md.
  */
 
 // Ambient bridge to the JavaScript muya/ tree. Delete this file the day
-// upstream TS muya (https://github.com/marktext/muya) lands.
+// upstream TS muya (https://github.com/aincoreNotes/muya) lands.
 //
 // We declare every muya path that's imported from outside src/muya/. This
 // cuts the dependency graph at the boundary: TypeScript no longer follows
@@ -77,7 +77,7 @@ declare module 'muya/lib/config' {
   export const MUYA_DEFAULT_OPTION: any
 }
 
-declare module 'muya/lib/marktext/spellchecker.js' {
+declare module 'muya/lib/aincoreNotes/spellchecker.js' {
   export function extractWord(...args: any[]): any
 }
 

@@ -2,7 +2,7 @@ import path from 'path'
 import { shell, type BrowserWindow, type MenuItemConstructorOptions } from 'electron'
 import { isFile } from 'common/filesystem'
 import * as actions from '../actions/help'
-import { checkUpdates } from '../actions/marktext'
+import { checkUpdates } from '../actions/aincoreNotes'
 import { t } from '../../i18n'
 
 /// Check whether the package is updatable at runtime.
@@ -50,13 +50,13 @@ export default function(): MenuItemConstructorOptions {
     {
       label: t('menu.help.followUs'),
       click() {
-        shell.openExternal('https://twitter.com/marktextapp')
+        shell.openExternal('https://github.com/bzda404/aincore-notes')
       }
     },
     {
       label: t('menu.help.support'),
       click() {
-        shell.openExternal('https://github.com/sponsors/marktext')
+        shell.openExternal('https://github.com/bzda404/aincore-notes')
       }
     },
     {

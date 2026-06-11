@@ -132,8 +132,8 @@ class RipgrepDirectorySearcher {
 
   constructor() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const marktext = (window as any).marktext
-    this.rgPath = marktext?.paths?.ripgrepBinaryPath || window.rgPath || ''
+    const aincoreNotes = (window as any).aincoreNotes
+    this.rgPath = aincoreNotes?.paths?.ripgrepBinaryPath || window.rgPath || ''
   }
 
   search(directories: string[], pattern: string, options: RipgrepSearchOptions): CancellableSearch {

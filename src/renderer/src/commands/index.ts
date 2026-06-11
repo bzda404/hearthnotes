@@ -636,7 +636,7 @@ const commands: CommandDescriptor[] = [
   },
 
   // --------------------------------------------------------------------------
-  // MarkText
+  // AinCore Notes
 
   {
     id: 'file.preferences',

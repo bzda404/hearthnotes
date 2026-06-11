@@ -1,7 +1,7 @@
 import { loadEditCommands } from './edit'
 import { loadFileCommands } from './file'
 import { loadFormatCommands } from './format'
-import { loadMarktextCommands } from './marktext'
+import { loadAinCoreNotesCommands } from './aincoreNotes'
 import { loadParagraphCommands } from './paragraph'
 import { loadViewCommands } from './view'
 import { loadWindowCommands } from './window'

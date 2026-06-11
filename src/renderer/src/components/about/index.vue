@@ -9,7 +9,7 @@
     >
       <img
         class="logo"
-        :src="MarkTextLogo"
+        :src="AinCore NotesLogo"
       >
       <el-row>
         <el-col :span="24">
@@ -44,7 +44,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useMainStore } from '@/store'
 import bus from '../../bus'
-import MarkTextLogo from '../../assets/images/logo.png'
+import AinCore NotesLogo from '../../assets/images/logo.png'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()

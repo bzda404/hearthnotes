@@ -123,7 +123,7 @@ export const useKBStore = defineStore('kb', () => {
   }
 
   /**
-   * 监听文件系统变化（MarkText 已有的 watcher 事件）
+   * 监听文件系统变化（AinCore Notes 已有的 watcher 事件）
    */
   let refreshDebounce: ReturnType<typeof setTimeout> | null = null
 

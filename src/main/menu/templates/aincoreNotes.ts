@@ -1,6 +1,6 @@
 import { app, type BrowserWindow, type MenuItemConstructorOptions } from 'electron'
 import { showAboutDialog } from '../actions/help'
-import * as actions from '../actions/marktext'
+import * as actions from '../actions/aincoreNotes'
 import { t } from '../../i18n'
 import type Keybindings from '../../keyboard/shortcutHandler'
 
@@ -8,22 +8,22 @@ import type Keybindings from '../../keyboard/shortcutHandler'
 
 export default function(keybindings: Keybindings): MenuItemConstructorOptions {
   return {
-    label: t('menu.marktext.title'),
+    label: t('menu.aincoreNotes.title'),
     submenu: [
       {
-        label: t('menu.marktext.about'),
+        label: t('menu.aincoreNotes.about'),
         click(_menuItem, focusedWindow) {
           showAboutDialog(focusedWindow as BrowserWindow | undefined)
         }
       },
       {
-        label: t('menu.marktext.checkUpdates'),
+        label: t('menu.aincoreNotes.checkUpdates'),
         click(_menuItem, focusedWindow) {
           actions.checkUpdates((focusedWindow as BrowserWindow | undefined) ?? null)
         }
       },
       {
-        label: t('menu.marktext.preferences'),
+        label: t('menu.aincoreNotes.preferences'),
         accelerator: keybindings.getAccelerator('file.preferences') ?? undefined,
         click() {
           actions.userSetting()
@@ -33,7 +33,7 @@ export default function(keybindings: Keybindings): MenuItemConstructorOptions {
         type: 'separator'
       },
       {
-        label: t('menu.marktext.services'),
+        label: t('menu.aincoreNotes.services'),
         role: 'services',
         submenu: []
       },
@@ -41,21 +41,21 @@ export default function(keybindings: Keybindings): MenuItemConstructorOptions {
         type: 'separator'
       },
       {
-        label: t('menu.marktext.hide'),
+        label: t('menu.aincoreNotes.hide'),
         accelerator: keybindings.getAccelerator('mt.hide') ?? undefined,
         click() {
           actions.osxHide()
         }
       },
       {
-        label: t('menu.marktext.hideOthers'),
+        label: t('menu.aincoreNotes.hideOthers'),
         accelerator: keybindings.getAccelerator('mt.hide-others') ?? undefined,
         click() {
           actions.osxHideAll()
         }
       },
       {
-        label: t('menu.marktext.showAll'),
+        label: t('menu.aincoreNotes.showAll'),
         click() {
           actions.osxShowAll()
         }
@@ -64,7 +64,7 @@ export default function(keybindings: Keybindings): MenuItemConstructorOptions {
         type: 'separator'
       },
       {
-        label: t('menu.marktext.quit'),
+        label: t('menu.aincoreNotes.quit'),
         accelerator: keybindings.getAccelerator('file.quit') ?? undefined,
         click: app.quit
       }

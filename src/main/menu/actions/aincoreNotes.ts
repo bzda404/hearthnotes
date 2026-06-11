@@ -97,7 +97,7 @@ export const osxShowAll = (): void => {
 
 // --- Commands -------------------------------------------------------------
 
-export const loadMarktextCommands = (commandManager: CommandManager): void => {
+export const loadAinCoreNotesCommands = (commandManager: CommandManager): void => {
   commandManager.add(COMMANDS.MT_HIDE, osxHide)
   commandManager.add(COMMANDS.MT_HIDE_OTHERS, osxHideAll)
 }

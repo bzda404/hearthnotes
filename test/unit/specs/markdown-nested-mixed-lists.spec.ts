@@ -28,7 +28,7 @@ const roundTrip = (markdown: string): string => {
   return new ExportMarkdown(blocks).generate()
 }
 
-// Regression test for marktext#4341 — a list whose type differs from its
+// Regression test for aincore-notes#4341 — a list whose type differs from its
 // enclosing list item (ul inside ol, or ol inside ul) was being rewritten
 // into a paragraph by the legacy muya lexer, losing the list structure.
 describe('Muya parser — nested mixed lists (#4341)', () => {

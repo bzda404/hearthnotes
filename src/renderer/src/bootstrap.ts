@@ -108,7 +108,7 @@ const bootstrapRenderer = (): void => {
   const { debug, initialState, userDataPath, windowId, type } = parseUrlArgs()
   // RendererPaths throws when userDataPath is missing; preserve that runtime check.
   const paths = new RendererPaths(userDataPath as string)
-  const marktext = {
+  const aincoreNotes = {
     initialState,
     env: {
       debug,
@@ -120,7 +120,7 @@ const bootstrapRenderer = (): void => {
   }
   // `global` is not available in a sandboxed renderer — attach to window.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ;(window as any).marktext = marktext
+  ;(window as any).aincoreNotes = aincoreNotes
 
   configureLogger()
 }

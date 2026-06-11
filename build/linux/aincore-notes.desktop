@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=AinCore Notes
+Comment=AI-driven local knowledge management application
+Exec=aincore-notes %F
+Terminal=false
+Type=Application
+Icon=aincore-notes
+Categories=Office;TextEditor;Utility;
+MimeType=text/markdown;
+Keywords=aincore-notes;aincore;
+StartupWMClass=aincore-notes
+Actions=NewWindow;
+
+[Desktop Action NewWindow]
+Name=New Window
+Exec=aincore-notes --new-window %F
+Icon=aincore-notes

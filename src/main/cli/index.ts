@@ -11,13 +11,13 @@ const writeLine = (s: string): boolean => write(s + '\n')
 const cli = (): ParsedArgs => {
   let argv = process.argv.slice(1)
   if (process.env.NODE_ENV === 'development') {
-    // Don't pass electron development arguments to MarkText and change user data path.
+    // Don't pass electron development arguments to AinCore Notes and change user data path.
     argv = ['--user-data-dir', path.join(getPath('appData'), 'aincore-notes-dev')]
   }
 
   const args = parseArgs(argv, true)
   if (args['--help']) {
-    write(`Usage: marktext [commands] [path ...]
+    write(`Usage: aincoreNotes [commands] [path ...]
 
   Available commands:
 
@@ -35,7 +35,7 @@ const cli = (): ParsedArgs => {
   }
 
   if (args['--version']) {
-    writeLine(`MarkText: ${AINCORE_NOTES_VERSION_STRING}`)
+    writeLine(`AinCore Notes: ${AINCORE_NOTES_VERSION_STRING}`)
     writeLine(`Node.js: ${process.versions.node}`)
     writeLine(`Electron: ${process.versions.electron}`)
     writeLine(`Chromium: ${process.versions.chrome}`)

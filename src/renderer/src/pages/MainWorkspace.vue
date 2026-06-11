@@ -1210,8 +1210,8 @@ watch(customCss, (v, old) => { if (v !== old) addCustomStyle({ customCss: v }) }
 watch(zoom, (z) => { bus.emit('mt::window-zoom', z) })
 
 onMounted(async () => {
-  if (window.marktext?.initialState) {
-    preferencesStore.SET_USER_PREFERENCE(window.marktext.initialState)
+  if (window.aincoreNotes?.initialState) {
+    preferencesStore.SET_USER_PREFERENCE(window.aincoreNotes.initialState)
   }
   mainStore.LISTEN_WIN_STATUS()
   await commandCenterStore.LISTEN_COMMAND_CENTER_BUS()
@@ -1260,7 +1260,7 @@ onMounted(async () => {
   // 全局快捷键
   document.addEventListener('keydown', handleGlobalKeydown)
 
-  // Bridge: when MarkText opens a directory, sync it to kbStore
+  // Bridge: when AinCore Notes opens a directory, sync it to kbStore
   window.electron.ipcRenderer.on('mt::open-directory', (_e: unknown, pathname: unknown) => {
     kbStore.setRootPath(String(pathname))
   })
@@ -1287,7 +1287,7 @@ onMounted(async () => {
   })
 
   nextTick(() => {
-    const init = window.marktext?.initialState
+    const init = window.aincoreNotes?.initialState
     const style: AddStylesOptions = {
       theme: init?.theme ?? DEFAULT_STYLE.theme,
       codeFontFamily: init?.codeFontFamily ?? DEFAULT_STYLE.codeFontFamily,

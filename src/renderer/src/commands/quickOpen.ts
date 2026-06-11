@@ -103,7 +103,7 @@ class QuickOpenCommand {
 
   executeSubcommand = async(id: string): Promise<void> => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { windowId } = (window as any).marktext.env
+    const { windowId } = (window as any).aincoreNotes.env
     window.electron.ipcRenderer.send('mt::open-file-by-window-id', windowId, id)
   }
 

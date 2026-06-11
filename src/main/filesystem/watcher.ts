@@ -393,7 +393,7 @@ class Watcher {
 
   /**
    * Check whether we should ignore the current event because the file may be
-   * changed from MarkText itself.
+   * changed from AinCore Notes itself.
    */
   async _shouldIgnoreEvent(
     winId: number,
