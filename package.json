@@ -1,11 +1,10 @@
 {
   "name": "hearthnotes",
   "version": "1.0.0-rc.1",
-  "description": "Hearthnotes \u2014 Local AI-powered knowledge management",
+  "description": "Hearthnotes — Local AI-powered knowledge management",
   "main": "./out/main/index.js",
   "private": true,
   "homepage": "https://github.com/bzda404/hearthnotes",
-  "packageManager": "pnpm@10.33.4",
   "engines": {
     "node": ">=20.19.0",
     "pnpm": ">=10"
