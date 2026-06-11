@@ -1,3 +1,5 @@
+import path from 'path'
+import os from 'os'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { clearKnowledgeBasePath, getKnowledgeBasePath } from 'main_renderer/mcp/handlers'
 
@@ -5,7 +7,7 @@ const handlers = new Map<string, (...args: unknown[]) => unknown>()
 
 vi.mock('electron', () => ({
   app: {
-    getPath: vi.fn(() => '/tmp/mindvault-test'),
+    getPath: vi.fn(() => path.join(os.tmpdir(), 'mindvault-test')),
   },
   ipcMain: {
     handle: vi.fn((channel: string, handler: (...args: unknown[]) => unknown) => {
@@ -35,16 +37,17 @@ describe('MCP IPC handlers', () => {
     const { registerMCPHandlers } = await import('main_renderer/ipc/mcp')
     registerMCPHandlers()
 
-    await handlers.get('mt::mcp::set-knowledge-base')?.({}, '/tmp/mindvault-notes')
+    const kbPath = path.join(os.tmpdir(), 'mindvault-notes')
+    await handlers.get('mt::mcp::set-knowledge-base')?.({}, kbPath)
     const status = await handlers.get('mt::mcp::status')?.({})
 
-    expect(getKnowledgeBasePath()).toBe('/tmp/mindvault-notes')
+    expect(getKnowledgeBasePath()).toBe(kbPath)
     expect(status).toMatchObject({
       running: true,
       transport: 'stdio',
       port: null,
       connectedClients: 0,
-      knowledgeBasePath: '/tmp/mindvault-notes',
+      knowledgeBasePath: kbPath,
       telemetry: {
         rag: {
           lastHitCount: 0,

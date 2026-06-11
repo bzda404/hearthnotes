@@ -1,3 +1,5 @@
+import path from 'path'
+import os from 'os'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 const appendFile = vi.fn(async() => undefined)
@@ -6,7 +8,7 @@ const readFile = vi.fn(async() => '')
 
 vi.mock('electron', () => ({
   app: {
-    getPath: vi.fn(() => '/tmp/mindvault-user-data'),
+    getPath: vi.fn(() => path.join(os.tmpdir(), 'mindvault-user-data')),
   },
 }))
 
@@ -43,9 +45,10 @@ describe('MCP telemetry persistence', () => {
     })
 
     await vi.waitFor(() => expect(appendFile).toHaveBeenCalled())
-    expect(mkdir).toHaveBeenCalledWith('/tmp/mindvault-user-data', { recursive: true })
+    const userDataDir = path.join(os.tmpdir(), 'mindvault-user-data')
+    expect(mkdir).toHaveBeenCalledWith(userDataDir, { recursive: true })
     expect(appendFile).toHaveBeenCalledWith(
-      '/tmp/mindvault-user-data/mcp-audit-log.jsonl',
+      path.join(userDataDir, 'mcp-audit-log.jsonl'),
       expect.stringContaining('"decision":"desensitized"'),
       'utf-8'
     )
