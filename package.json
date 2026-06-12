@@ -1,6 +1,6 @@
 {
   "name": "aincore-notes",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "AinCore Notes — AI 驱动的本地知识管理应用：Markdown 编辑器、BM25 + RRF 三层搜索管线、MCP 协议服务端与隐私哨兵",
   "main": "./out/main/index.js",
   "private": true,
