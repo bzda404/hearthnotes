@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@aincore/sdk':
-        specifier: ^0.4.1
-        version: 0.4.1
+        specifier: ^1.0.0
+        version: 1.0.0
       '@electron-toolkit/preload':
         specifier: ^3.0.2
         version: 3.0.2(electron@38.4.0)
@@ -295,8 +295,8 @@ importers:
 
 packages:
 
-  '@aincore/sdk@0.4.1':
-    resolution: {integrity: sha512-fmErBucgvsPZzXAM2LRJ8X0++EQdFm/CE7qb797Xg8jQOxjxvMDN4nlDEA6Ocl3I3p0mhvslFCKxnYrWc/lE3w==}
+  '@aincore/sdk@1.0.0':
+    resolution: {integrity: sha512-Kx66jNa/XOwl23RE6AYN6OSVfocRvdTBIIKWR5j8LUOw/XPphm3WW/RelkxSyx4a3yvi/jzEALWCkZek3tillQ==}
 
   '@antfu/install-pkg@1.1.0':
     resolution: {integrity: sha512-MGQsmw10ZyI+EJo45CdSER4zEb+p31LpDAFp2Z3gkSd1yqVZGi0Ebx++YTEMonJy4oChEMLsxZ64j8FH6sSqtQ==}
@@ -5460,7 +5460,7 @@ packages:
 
 snapshots:
 
-  '@aincore/sdk@0.4.1': {}
+  '@aincore/sdk@1.0.0': {}
 
   '@antfu/install-pkg@1.1.0':
     dependencies:

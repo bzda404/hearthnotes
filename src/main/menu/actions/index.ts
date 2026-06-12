@@ -11,7 +11,7 @@ export const loadMenuCommands = (commandManager: CommandManager): void => {
   loadEditCommands(commandManager)
   loadFileCommands(commandManager)
   loadFormatCommands(commandManager)
-  loadMarktextCommands(commandManager)
+  loadAinCoreNotesCommands(commandManager)
   loadParagraphCommands(commandManager)
   loadViewCommands(commandManager)
   loadWindowCommands(commandManager)

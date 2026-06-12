@@ -38,7 +38,7 @@
     "@element-plus/icons-vue": "^2.3.2",
     "@hfelix/electron-localshortcut": "^4.0.1",
     "@marktext/file-icons": "^1.0.6",
-    "@aincore/sdk": "^0.4.1",
+    "@aincore/sdk": "^1.0.0",
     "@modelcontextprotocol/sdk": "^1.29.0",
     "@popperjs/core": "^2.11.8",
     "@vscode/ripgrep": "^1.18.0",
