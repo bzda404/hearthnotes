@@ -6,9 +6,9 @@ const pinia = createPinia()
 // Main store for global states.
 export const useMainStore = defineStore('main', () => {
   // Platform of system: 'darwin' | 'win32' | 'linux'
-  const platform = ref<NodeJS.Platform>(window.electron.process.platform)
+  const platform = ref<NodeJS.Platform>(window.electron?.process?.platform ?? 'darwin')
   // AinCore Notes version string
-  const appVersion = ref<string>(window.electron.process.env.AINCORE_NOTES_VERSION_STRING ?? '')
+  const appVersion = ref<string>(window.electron?.process?.env?.AINCORE_NOTES_VERSION_STRING ?? '')
   // Whether current window is active or focused
   const windowActive = ref(true)
   // Whether AinCore Notes is initialized
@@ -23,7 +23,7 @@ export const useMainStore = defineStore('main', () => {
   }
 
   function LISTEN_WIN_STATUS(): void {
-    window.electron.ipcRenderer.on('mt::window-active-status', (_e, status) => {
+    window.electron?.ipcRenderer?.on('mt::window-active-status', (_e, status) => {
       // Main sends `{ status: boolean }` per IPC contract — narrow at the boundary.
       const flag = (status as unknown as { status?: boolean } | undefined)?.status
       windowActive.value = !!flag

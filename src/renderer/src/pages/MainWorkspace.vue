@@ -426,6 +426,21 @@
             class="ai-pill hub-connected"
           >Core</span>
           <button
+            v-if="messages.length > 0"
+            class="panel-btn"
+            :title="t('workspace.ai.newChat')"
+            @click="startNewChat"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            ><path d="M12 5v14M5 12h14" /></svg>
+          </button>
+          <button
             class="panel-btn"
             @click="aiPanelVisible = false"
           >
@@ -705,6 +720,9 @@ import 'katex/dist/katex.min.css'
 // 将 katex 暴露到 window 供 renderMarkdown 使用
 ;(window as any).katex = katex
 
+// i18n
+const { t } = useI18n()
+
 // Stores
 const aiStore = useAIStore()
 const kbStore = useKBStore()
@@ -946,6 +964,12 @@ interface ChatMessage {
 
 const messages = ref<ChatMessage[]>([])
 
+function startNewChat (): void {
+  messages.value = []
+  inputText.value = ''
+  chatLoading.value = false
+}
+
 function scrollChatToBottom (): void {
   nextTick(() => {
     if (chatContainer.value) {
@@ -1107,10 +1131,14 @@ async function sendMessage (text: string): Promise<void> {
         }
       }
     } else {
-      // 通用回复：让 AI 用自己的话回答
+      // 通用回复：传递笔记内容给 AI 进行上下文相关回答
       try {
-        const resp = await aiStore.summarize({ text, maxLength: 200 })
-        response = resp.summary || t('workspace.chat.cannotUnderstand')
+        const resp = await aiStore.chatWithContext({
+          message: text,
+          noteContent: previewContent.value || '',
+          notePath: currentPreviewPath.value || undefined,
+        })
+        response = resp.reply || t('workspace.chat.cannotUnderstand')
       } catch {
         response = '抱歉，AI 暂时无法回复。请确保模型已加载，然后重试。'
       }

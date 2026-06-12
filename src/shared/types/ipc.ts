@@ -42,6 +42,8 @@ import type {
   SummarizeResponse,
   OrganizeRequest,
   OrganizeResponse,
+  ChatWithContextRequest,
+  ChatWithContextResponse,
   ModelDownloadProgress,
   InstalledModelInfo
 } from './aiTypes'
@@ -102,6 +104,7 @@ export interface IpcInvokeChannels {
   'mt::ai::autocomplete': { args: [req: AutocompleteRequest]; ret: AutocompleteResponse }
   'mt::ai::correct-grammar': { args: [req: GrammarCorrectionRequest]; ret: GrammarCorrectionResponse }
   'mt::ai::summarize': { args: [req: SummarizeRequest]; ret: SummarizeResponse }
+  'mt::ai::chat-with-context': { args: [req: ChatWithContextRequest]; ret: ChatWithContextResponse }
   'mt::ai::organize': { args: [req: OrganizeRequest]; ret: OrganizeResponse }
   'mt::ai::download-model': { args: [options?: { name: string; url: string; quantization: string; size: string }]; ret: void }
   'mt::ai::import-local-model': { args: []; ret: InstalledModelInfo | null }

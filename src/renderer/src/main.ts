@@ -25,7 +25,18 @@ import './assets/styles/printService.css'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ;(window as any).aincoreNotes = {}
-bootstrapRenderer()
+try {
+  bootstrapRenderer()
+} catch (e) {
+  console.error('[Renderer] bootstrapRenderer failed:', e)
+  // Provide degraded config so Vue app can still mount
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ;(window as any).aincoreNotes = {
+    initialState: {},
+    env: { debug: true, paths: null, windowId: 0, type: 'editor' },
+    paths: null
+  }
+}
 
 // -----------------------------------------------
 // Be careful when changing code before this line!

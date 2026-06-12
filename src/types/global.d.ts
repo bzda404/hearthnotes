@@ -189,12 +189,17 @@ declare global {
     correctGrammar(req: GrammarCorrectionRequest): Promise<GrammarCorrectionResponse>
     summarize(req: SummarizeRequest): Promise<SummarizeResponse>
     organize(req: OrganizeRequest): Promise<OrganizeResponse>
+    chatWithContext(req: ChatWithContextRequest): Promise<ChatWithContextResponse>
     isModelPresent(): Promise<boolean>
     downloadModel(options?: { name: string; url: string; quantization: string; size: string }): Promise<void>
     importLocalModel(): Promise<InstalledModelInfo | null>
     cancelDownload(): Promise<void>
     onDownloadProgress(handler: (progress: ModelDownloadProgress) => void): () => void
     onStatusChanged(handler: (status: AISidecarStatus) => void): () => void
+    onCoreDisconnected(handler: () => void): () => void
+    onCoreReconnecting(handler: (attempt: number) => void): () => void
+    onCoreReconnected(handler: () => void): () => void
+    onCoreConnectionFailed(handler: () => void): () => void
   }
 
   interface MCPAPI {

@@ -15,6 +15,8 @@ import type {
   SummarizeResponse,
   OrganizeRequest,
   OrganizeResponse,
+  ChatWithContextRequest,
+  ChatWithContextResponse,
   ModelDownloadProgress,
   SidecarStatus,
 } from '@shared/types/aiTypes'
@@ -124,6 +126,14 @@ export const useAIStore = defineStore('ai', () => {
     return window.ai.summarize(req)
   }
 
+  async function chatWithContext(req: ChatWithContextRequest): Promise<ChatWithContextResponse> {
+    if (!isReady.value) {
+      ElMessage.warning(t('error.AI_NOT_READY'))
+      throw new Error('AI is not ready')
+    }
+    return window.ai.chatWithContext(req)
+  }
+
   async function organize(req: OrganizeRequest): Promise<OrganizeResponse> {
     if (!isReady.value) {
       ElMessage.warning(t('error.AI_NOT_READY'))
@@ -205,21 +215,21 @@ export const useAIStore = defineStore('ai', () => {
     })
 
     // Reconnection events (if available on window.ai)
-    if (typeof (window.ai as Record<string, unknown>).onCoreDisconnected === 'function') {
+    if (typeof (window.ai as unknown as Record<string, unknown>).onCoreDisconnected === 'function') {
       cleanupReconnect.push(
-        (window.ai as Record<string, unknown> & { onCoreDisconnected: (cb: () => void) => () => void })
+        (window.ai as unknown as Record<string, unknown> & { onCoreDisconnected: (cb: () => void) => () => void })
           .onCoreDisconnected(() => onCoreDisconnected()),
       )
     }
-    if (typeof (window.ai as Record<string, unknown>).onCoreReconnecting === 'function') {
+    if (typeof (window.ai as unknown as Record<string, unknown>).onCoreReconnecting === 'function') {
       cleanupReconnect.push(
-        (window.ai as Record<string, unknown> & { onCoreReconnecting: (cb: (a: number) => void) => () => void })
+        (window.ai as unknown as Record<string, unknown> & { onCoreReconnecting: (cb: (a: number) => void) => () => void })
           .onCoreReconnecting((attempt: number) => onCoreReconnecting(attempt)),
       )
     }
-    if (typeof (window.ai as Record<string, unknown>).onCoreReconnected === 'function') {
+    if (typeof (window.ai as unknown as Record<string, unknown>).onCoreReconnected === 'function') {
       cleanupReconnect.push(
-        (window.ai as Record<string, unknown> & { onCoreReconnected: (cb: () => void) => () => void })
+        (window.ai as unknown as Record<string, unknown> & { onCoreReconnected: (cb: () => void) => () => void })
           .onCoreReconnected(() => onCoreReconnected()),
       )
     }
@@ -262,6 +272,7 @@ export const useAIStore = defineStore('ai', () => {
     autocomplete,
     correctGrammar,
     summarize,
+    chatWithContext,
     organize,
     downloadModel,
     importLocalModel,

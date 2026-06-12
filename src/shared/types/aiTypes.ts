@@ -148,6 +148,17 @@ export interface ModelDownloadInfo {
   hash: string
 }
 
+// Chat with note context
+export interface ChatWithContextRequest {
+  message: string
+  noteContent: string
+  notePath?: string
+}
+
+export interface ChatWithContextResponse {
+  reply: string
+}
+
 // AI feature flags
 export interface AIFeatures {
   autocompleteEnabled: boolean

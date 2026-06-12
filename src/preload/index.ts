@@ -231,6 +231,7 @@ const aiAPI = {
   autocomplete: (req: unknown) => invoke('mt::ai::autocomplete', req as never),
   correctGrammar: (req: unknown) => invoke('mt::ai::correct-grammar', req as never),
   summarize: (req: unknown) => invoke('mt::ai::summarize', req as never),
+  chatWithContext: (req: unknown) => invoke('mt::ai::chat-with-context', req as never),
   organize: (req: unknown) => invoke('mt::ai::organize', req as never),
   isModelPresent: () => invoke('mt::ai::is-model-present'),
   downloadModel: (options?: unknown) => invoke('mt::ai::download-model', options as never),
@@ -245,6 +246,27 @@ const aiAPI = {
     const sub = (_e: IpcRendererEvent, status: unknown) => handler(status)
     ipcRenderer.on('mt::ai::status-changed', sub)
     return () => ipcRenderer.removeListener('mt::ai::status-changed', sub)
+  },
+  // Core reconnection events
+  onCoreDisconnected: (handler: () => void) => {
+    const sub = () => handler()
+    ipcRenderer.on('core:disconnected', sub)
+    return () => ipcRenderer.removeListener('core:disconnected', sub)
+  },
+  onCoreReconnecting: (handler: (attempt: number) => void) => {
+    const sub = (_e: IpcRendererEvent, attempt: number) => handler(attempt)
+    ipcRenderer.on('core:reconnecting', sub)
+    return () => ipcRenderer.removeListener('core:reconnecting', sub)
+  },
+  onCoreReconnected: (handler: () => void) => {
+    const sub = () => handler()
+    ipcRenderer.on('core:reconnected', sub)
+    return () => ipcRenderer.removeListener('core:reconnected', sub)
+  },
+  onCoreConnectionFailed: (handler: () => void) => {
+    const sub = () => handler()
+    ipcRenderer.on('core:failed', sub)
+    return () => ipcRenderer.removeListener('core:failed', sub)
   }
 }
 

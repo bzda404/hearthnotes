@@ -31,6 +31,10 @@ export const registerAIHandlers = (): void => {
     return aiService.summarize(req)
   })
 
+  ipcMain.handle('mt::ai::chat-with-context', async(_event, req) => {
+    return aiService.chatWithContext(req)
+  })
+
   ipcMain.handle('mt::ai::organize', async(_event, req) => {
     return aiService.suggestOrganization(req)
   })
@@ -42,17 +46,25 @@ export const registerAIHandlers = (): void => {
 
 async function getAIStatus(): Promise<AISidecarStatus> {
   const ready = isCoreReady()
-  const coreStatus = await getCoreRuntimeStatus()
-  const status = ready && coreStatus?.status === 'ready'
-    ? 'ready'
-    : 'stopped'
+  const raw = await getCoreRuntimeStatus() as Record<string, unknown> | null
+
+  // Core status route returns 'ok' when healthy; SDK CoreStatus type says 'ready'
+  const isHealthy = ready && (raw?.status === 'ready' || raw?.status === 'ok')
+  const status = isHealthy ? 'ready' : 'stopped'
+
+  // Core returns runningModels[] (array); SDK type has loadedModel (string|null)
+  const runningModels = Array.isArray(raw?.runningModels) ? raw!.runningModels as string[] : []
+  const loadedModelId = (raw?.loadedModel as string) || runningModels[0] || null
+
+  const defaultModelInfo = raw?.defaultModel as Record<string, unknown> | null | undefined
+  const telemetry = raw?.telemetry as Record<string, unknown> | null | undefined
 
   return {
     status,
-    model: coreStatus?.loadedModel
+    model: loadedModelId
       ? {
-        id: coreStatus.loadedModel,
-        name: coreStatus.loadedModel,
+        id: loadedModelId,
+        name: loadedModelId,
         path: '',
         parameters: '≤1B',
         quantization: 'Q4_K_M',
@@ -65,16 +77,25 @@ async function getAIStatus(): Promise<AISidecarStatus> {
       running: ready,
       startedByNote: false,
       pid: null,
-      defaultModel: coreStatus?.loadedModel
-        ? { loaded: true, modelId: coreStatus.loadedModel, reason: null }
-        : null,
-      telemetry: null,
+      defaultModel: loadedModelId
+        ? { loaded: true, modelId: loadedModelId, reason: null }
+        : defaultModelInfo
+          ? { loaded: !!defaultModelInfo.loaded, modelId: defaultModelInfo.modelId as string || '', reason: defaultModelInfo.reason as string || null }
+          : null,
+      telemetry: telemetry ? {
+        lastLatencyMs: telemetry.lastLatencyMs as number | undefined ?? null,
+        lastTokensPerSecond: telemetry.lastTokensPerSecond as number | undefined ?? null,
+        lastPromptTokens: telemetry.lastPromptTokens as number | undefined ?? null,
+        lastCompletionTokens: telemetry.lastCompletionTokens as number | undefined ?? null,
+        lastTotalTokens: telemetry.lastTotalTokens as number | undefined ?? null,
+        updatedAt: telemetry.updatedAt as string | undefined ?? null,
+      } : null,
     },
     port: null,
     ramMB: null,
     tokPerSec: null,
     lightweightPolicy,
-    error: ready ? (coreStatus?.status === 'ready' ? null : 'AinCore 已连接，但模型尚未运行') : 'AinCore 未运行',
+    error: isHealthy ? null : ready ? 'AinCore 已连接，但模型尚未运行' : 'AinCore 未运行',
   }
 }
 

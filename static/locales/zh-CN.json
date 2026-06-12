@@ -1475,7 +1475,8 @@
       "mcpOffline": "离线",
       "sentinel": "哨兵",
       "auditTitle": "审计摘要",
-      "clear": "清空"
+      "clear": "清空",
+      "newChat": "新对话"
     },
     "chat": {
       "noNoteForSummary": "当前没有打开的笔记。请先打开一篇笔记，然后再让我帮你总结。",

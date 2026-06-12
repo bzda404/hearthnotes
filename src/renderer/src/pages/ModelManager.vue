@@ -361,9 +361,11 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import type { AISidecarStatus, InstalledModelInfo } from '@shared/types/aiTypes'
 import { useAIStore } from '@/store/aiStore'
 
+const { t } = useI18n()
 const router = useRouter()
 const aiStore = useAIStore()
 

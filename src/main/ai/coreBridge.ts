@@ -24,6 +24,8 @@ import type {
   SummarizeResponse,
   OrganizeRequest,
   OrganizeResponse,
+  ChatWithContextRequest,
+  ChatWithContextResponse,
 } from '@shared/types/aiTypes'
 import { IncrementalJsonRepair } from './jsonRepair'
 import {
@@ -374,6 +376,7 @@ export async function autocomplete(req: AutocompleteRequest): Promise<Autocomple
     messages: [{ role: 'user', content: `请补全以下 Markdown 内容，只输出补全的部分，不要其他解释：\n${contextLines}` }],
     max_tokens: 64,
     temperature: 0.2,
+    extra: { _skip_profile_injection: true },
   })
 
   return {
@@ -409,6 +412,7 @@ export async function correctGrammar(req: GrammarCorrectionRequest): Promise<Gra
         ],
         max_tokens: Math.max(512, req.text.length * 2),
         temperature: 0.1,
+        extra: { _skip_profile_injection: true },
       })
 
       const repairer = new IncrementalJsonRepair()
@@ -453,6 +457,7 @@ export async function summarize(req: SummarizeRequest): Promise<SummarizeRespons
     ],
     max_tokens: maxLen * 2,
     temperature: 0.3,
+    extra: { _skip_profile_injection: true },
   })
 
   return { summary: result.content.trim() }
@@ -496,6 +501,7 @@ ${noteList}
         ],
         max_tokens: 1024,
         temperature: 0.4,
+        extra: { _skip_profile_injection: true },
       })
 
       const repairer = new IncrementalJsonRepair()
@@ -515,6 +521,39 @@ ${noteList}
   }
 
   return fallback
+}
+
+/**
+ * 带笔记上下文的通用聊天
+ * 将笔记内容 + 用户消息一起发给模型，使模型能基于笔记内容回答
+ */
+export async function chatWithContext(req: ChatWithContextRequest): Promise<ChatWithContextResponse> {
+  if (!oauthReady) {
+    return { reply: '' }
+  }
+
+  const noteText = req.noteContent.length > 4000
+    ? req.noteContent.slice(0, 4000) + '...'
+    : req.noteContent
+
+  const systemPrompt = req.noteContent
+    ? `你是 AinCore Notes 的 AI 助手。用户正在编辑一篇笔记，请基于笔记内容回答用户的问题。\n\n## 当前笔记内容\n\n${noteText}`
+    : `你是 AinCore Notes 的 AI 助手。请回答用户的问题。`
+
+  try {
+    const result = await client.chat({
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: req.message },
+      ],
+      max_tokens: 512,
+      temperature: 0.5,
+      extra: { _skip_profile_injection: true },
+    })
+    return { reply: result.content.trim() }
+  } catch {
+    return { reply: '' }
+  }
 }
 
 // ============================================================
