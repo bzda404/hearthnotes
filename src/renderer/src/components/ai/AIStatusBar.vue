@@ -27,6 +27,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import { useAIStore } from '@/store/aiStore'
+import { t } from '@/i18n'
 
 const store = useAIStore()
 
@@ -38,9 +39,9 @@ const statusClass = computed(() => ({
 }))
 
 const actionLabel = computed(() => {
-  if (store.status === 'error') return '重试'
-  if (store.needsLightweightModel || !store.hasModel) return '安装轻量模型'
-  return '刷新'
+  if (store.status === 'error') return t('ai.action.retry')
+  if (store.needsLightweightModel || !store.hasModel) return t('ai.action.installLightweight')
+  return t('ai.action.refresh')
 })
 
 async function handleAction (): Promise<void> {

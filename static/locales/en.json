@@ -1407,6 +1407,11 @@
       "tokPerSec": "tok/s",
       "unknownParams": "Unknown params",
       "defaultHint": "Connect to AinCore via local UDS"
+    },
+    "action": {
+      "retry": "Retry",
+      "installLightweight": "Install Lightweight Model",
+      "refresh": "Refresh"
     }
   },
   "onboarding": {

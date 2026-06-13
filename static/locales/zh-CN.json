@@ -1408,6 +1408,11 @@
       "tokPerSec": "tok/s",
       "unknownParams": "参数未知",
       "defaultHint": "通过本地 UDS 连接 AinCore"
+    },
+    "action": {
+      "retry": "重试",
+      "installLightweight": "安装轻量模型",
+      "refresh": "刷新"
     }
   },
   "onboarding": {

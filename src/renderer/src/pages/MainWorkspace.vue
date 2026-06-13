@@ -1126,7 +1126,7 @@ async function sendMessage (text: string): Promise<void> {
         } else {
           response = t('workspace.chat.organizeSuggestions', { count: String(notes.length) }) + '\n\n'
           for (const g of s.suggestions) {
-            response += `**${g.folderName}**（${g.notes.length} 篇）\n${g.reason}\n\n`
+            response += `**${g.folderName}** (${g.notes.length})\n${g.reason}\n\n`
           }
         }
       }
@@ -1140,19 +1140,20 @@ async function sendMessage (text: string): Promise<void> {
         })
         response = resp.reply || t('workspace.chat.cannotUnderstand')
       } catch {
-        response = '抱歉，AI 暂时无法回复。请确保模型已加载，然后重试。'
+        response = t('workspace.chat.aiUnavailable')
       }
     }
 
-    // Stream the response
+    // Stream the response in chunks for smooth visual effect
     assistantMsg.content = ''
-    for (let i = 0; i < response.length; i++) {
-      assistantMsg.content += response[i]
-      if (i % 3 === 0) {
-        scrollChatToBottom()
-        await new Promise(resolve => setTimeout(resolve, 12))
-      }
+    const CHUNK_SIZE = 4
+    const FRAME_MS = 16 // ~60fps
+    for (let i = 0; i < response.length; i += CHUNK_SIZE) {
+      assistantMsg.content += response.slice(i, i + CHUNK_SIZE)
+      scrollChatToBottom()
+      await new Promise(resolve => setTimeout(resolve, FRAME_MS))
     }
+    assistantMsg.content = response // Ensure complete text
     assistantMsg.streaming = false
     scrollChatToBottom()
   } catch {
@@ -1224,12 +1225,7 @@ function formatSpeed (b?: number): string {
 }
 
 function formatAuditDecision (decision: 'allowed' | 'rejected' | 'desensitized' | 'timeout'): string {
-  switch (decision) {
-    case 'allowed': return '允许'
-    case 'desensitized': return '脱敏'
-    case 'timeout': return '超时'
-    case 'rejected': return '拒绝'
-  }
+  return t(`workspace.audit.${decision}`)
 }
 
 // Theme watchers
@@ -1289,7 +1285,7 @@ onMounted(async () => {
   document.addEventListener('keydown', handleGlobalKeydown)
 
   // Bridge: when AinCore Notes opens a directory, sync it to kbStore
-  window.electron.ipcRenderer.on('mt::open-directory', (_e: unknown, pathname: unknown) => {
+  const offOpenDirectory = window.electron.ipcRenderer.on('mt::open-directory', (_e: unknown, pathname: unknown) => {
     kbStore.setRootPath(String(pathname))
   })
 
@@ -1330,6 +1326,7 @@ onUnmounted(() => {
   aiStore.cleanup()
   mcpStore.cleanup()
   document.removeEventListener('keydown', handleGlobalKeydown)
+  offOpenDirectory?.()
 })
 </script>
 
